@@ -1,0 +1,15 @@
+{
+  "name": "bs-ant-design",
+  "reason": { "react-jsx": 2 },
+  "sources": ["src"],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": false
+    }
+  ],
+  "suffix": ".js",
+  "namespace": false,
+  "bs-dependencies": ["reason-react", "re-classnames"],
+  "refmt": 3
+}

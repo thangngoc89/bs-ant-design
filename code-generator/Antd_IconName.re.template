@@ -1,0 +1,17 @@
+/* 
+  DO NOT EDIT 
+  This is an generated file. Regenerate by executing `node ./code-generator/IconName.js`
+*/
+type t = string;
+
+let toString = t => t;
+
+let fromString = t => t;
+
+let (==) = (t1, t2) => t1 == t2;
+
+<% 
+  _.forEach(icons, function(icon) { 
+    %>let <%- icon[1] %> = "<%- icon[0] %>";
+
+<% }); %>
