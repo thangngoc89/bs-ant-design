@@ -8,13 +8,13 @@ On demand bindings for Ant Design.
 
 ## Components
 
-[x] Breadcrumb
+- [x] Breadcrumb
 
-[x] Menu
+- [x] Menu
 
-[x] Layout
+- [x] Layout
 
-[x] Icon
+- [x] Icon
 
 ## LICENSE
 
