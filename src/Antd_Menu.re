@@ -119,10 +119,10 @@ module Item = {
     ) =>
     _ =
     "";
-  let make = (~id=?, ~className=?, ~style=?, ~disabled=?, ~key_=?, children) =>
+  let make = (~disabled=?, ~key_=?, ~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
-      ~props=makeProps(~key=?key_, ~id?, ~className?, ~style?, ()),
+      ~props=makeProps(~key=?key_, ~disabled?, ~id?, ~className?, ~style?, ()),
       children
     );
 };
@@ -130,6 +130,7 @@ module Item = {
 module SubMenu = {
   [@bs.module "antd/lib/menu"]
   external subMenu : ReasonReact.reactClass = "SubMenu";
+  [@bs.obj]
   external makeProps :
     (
       ~disabled: Js.boolean=?,
@@ -206,7 +207,7 @@ module Divider = {
     ) =>
     _ =
     "";
-  let make = (~id=?, ~className=?, ~style=?, ~disabled=?, children) =>
+  let make = (~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=divider,
       ~props=makeProps(~id?, ~className?, ~style?, ()),
