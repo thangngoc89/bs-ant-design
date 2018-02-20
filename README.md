@@ -8,9 +8,23 @@ Difference from [bs-antd](https://github.com/tiensonqin/bs-antd) : It uses the o
 
 I also attempted to rewrite the components when possible for a better integration.
 
+## Installation
+
+With npm:
+
+```
+npm install --save bs-ant-design
+```
+
+With yarn:
+
+```
+yarn add bs-ant-design
+```
+
 ## Usage
 
-Please check [ant design's documentation](https://ant.design/docs/react/introduce).
+Please check [ant design's documentation for each component](https://ant.design/docs/react/introduce).
 
 I tried to keep the API as close to the original JS API as possible.
 
