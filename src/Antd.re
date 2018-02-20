@@ -2,6 +2,8 @@ module Breadcrumb = Antd_Breadcrumb;
 
 module Button = Antd_Button;
 
+module Divider = Antd_Divider;
+
 module Icon = Antd_Icon;
 
 module IconName = Antd_IconName;
