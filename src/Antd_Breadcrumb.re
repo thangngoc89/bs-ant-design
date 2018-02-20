@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module]
 external breadcrumb : ReasonReact.reactClass = "antd/lib/breadcrumb";
 
