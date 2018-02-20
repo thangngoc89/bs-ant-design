@@ -8,7 +8,7 @@ let toString = t => t;
 
 let fromString = t => t;
 
-let (==) = (t1, t2) => t1 == t2;
+let compare = (t1, t2) => t1 == t2;
 
 <% 
   _.forEach(icons, function(icon) { 

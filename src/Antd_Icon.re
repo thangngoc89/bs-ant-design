@@ -22,7 +22,10 @@ let make =
         "anticon",
         className |> Cn.ifOpt,
         "anticon-" ++ Antd_IconName.toString(type_),
-        "anticon-spin" |> Cn.ifBool(spin || Antd_IconName.(loading == type_))
+        "anticon-spin"
+        |> Cn.ifBool(
+             spin || Antd_IconName.compare(Antd_IconName.loading, type_)
+           )
       ]);
     <i className=classString ?onClick ?style ?title />;
   }

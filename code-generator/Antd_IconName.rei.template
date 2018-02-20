@@ -8,7 +8,7 @@ let toString: t => string;
 
 let fromString: string => t;
 
-let (==) = ('a, 'a) => bool;
+let compare: ('a, 'a) => bool;
 
 <% 
   _.forEach(icons, function(icon) { 

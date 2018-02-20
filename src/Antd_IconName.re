@@ -1,14 +1,14 @@
-/*
-   DO NOT EDIT
-   This is an generated file. Regenerate by executing `node ./code-generator/IconName.js`
- */
+/* 
+  DO NOT EDIT 
+  This is an generated file. Regenerate by executing `node ./code-generator/IconName.js`
+*/
 type t = string;
 
 let toString = t => t;
 
 let fromString = t => t;
 
-let (==) = (t1, t2) => t1 == t2;
+let compare = (t1, t2) => t1 == t2;
 
 let stepBackward = "step-backward";
 
@@ -232,11 +232,15 @@ let fileUnknown = "file-unknown";
 
 let filePdf = "file-pdf";
 
+let fileWord = "file-word";
+
 let fileExcel = "file-excel";
 
 let fileJpg = "file-jpg";
 
 let filePpt = "file-ppt";
+
+let fileMarkdown = "file-markdown";
 
 let fileAdd = "file-add";
 
@@ -559,3 +563,25 @@ let codepenCircle = "codepen-circle";
 let alipay = "alipay";
 
 let antDesign = "ant-design";
+
+let aliyun = "aliyun";
+
+let zhihu = "zhihu";
+
+let slack = "slack";
+
+let slackSquare = "slack-square";
+
+let behance = "behance";
+
+let behanceSquare = "behance-square";
+
+let dribbble = "dribbble";
+
+let dribbbleSquare = "dribbble-square";
+
+let instagram = "instagram";
+
+let yuque = "yuque";
+
+
