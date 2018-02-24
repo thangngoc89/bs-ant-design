@@ -122,7 +122,7 @@ module Item = {
   let make = (~disabled=?, ~key_=?, ~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
-      ~props=makeProps(~key=?key_, ~disabled?, ~id?, ~className?, ~style?, ()),
+      ~props=makeProps(~key=?key_, ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled), ~id?, ~className?, ~style?, ()),
       children
     );
 };
@@ -159,7 +159,7 @@ module SubMenu = {
       ~reactClass=subMenu,
       ~props=
         makeProps(
-          ~disabled?,
+          ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
           ~key=?key_,
           ~title?,
           ~onTitleClick?,
