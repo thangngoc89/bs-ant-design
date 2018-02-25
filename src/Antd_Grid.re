@@ -1,7 +1,6 @@
 open Antd_Helpers;
 
 [%bs.raw {|require("antd/lib/grid/style")|}];
-
 module Row = {
   [@bs.module]
   external reactClass : ReasonReact.reactClass = "antd/lib/grid/row";
@@ -21,16 +20,6 @@ module Row = {
     | `spaceBetween
   ];
 
-  type breakpointMap = {
-    .
-    "xs": Js.undefined(string),
-    "sm": Js.undefined(string),
-    "md": Js.undefined(string),
-    "lg": Js.undefined(string),
-    "xl": Js.undefined(string),
-    "xxl": Js.undefined(string)
-  };
-
   [@bs.obj] external _gutterBreakpointMap: 
     (
       ~xs: string=?,
@@ -40,71 +29,33 @@ module Row = {
       ~xl: string=?,
       ~xxl: string=?,
       unit
-    ) => 
-    _ = 
-    "";
+    ) => _ = "";
 
-  type gutterParameter = 
-    | Simple(int)
-    | BreakpointMap(breakpointMap);
+  let simpleGutter = x => SimpleProp(x);
 
-  let simpleGutter = x => Simple(x);
-
-  let breakpointGutter = (
-    ~xs=?,
-    ~sm=?,
-    ~md=?,
-    ~lg=?,
-    ~xl=?,
-    ~xxl=?,
-    ()
-  ): gutterParameter => {
-    let map = (f, opt) =>
-    switch opt {
-    | Some(v) => Some(f(v))
-    | None => None
-    };
-
-    BreakpointMap(_gutterBreakpointMap(
-      ~xs =? xs |> map(string_of_int),
-      ~sm =? sm |> map(string_of_int),
-      ~md =? md |> map(string_of_int),
-      ~lg =? lg |> map(string_of_int),
-      ~xl =? xl |> map(string_of_int),
-      ~xxl =? xxl |> map(string_of_int),
-      ()
-      ))
+  let breakpointGutter = (~xs=?,~sm=?,~md=?,~lg=?,~xl=?,~xxl=?,()) => {
+    /* ant design uses strings here even though it makes more sense to be number */
+    ObjectProp(_gutterBreakpointMap(
+      ~xs =? xs |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~sm =? sm |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~md =? md |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~lg =? lg |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~xl =? xl |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~xxl =? xxl |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ()))
   };
 
   [@bs.obj]
-  external makePropsGutterInt :
+  external makePropsGutter :
     (
       ~className: string=?,
-      ~gutter: int=?,
       ~_type: string=?,
       ~align: string=?,
       ~justify: string=?,
       ~style: ReactDOMRe.Style.t=?,
       ~prefixCls: string=?,
       unit
-    ) =>
-    _ =
-    "";
-
-  [@bs.obj]
-  external makePropsGutterObj :
-    (
-      ~className: string=?,
-      ~gutter:breakpointMap =?,
-      ~_type: string=?,
-      ~align: string=?,
-      ~justify: string=?,
-      ~style: ReactDOMRe.Style.t=?,
-      ~prefixCls: string=?,
-      unit
-    ) =>
-    _ =
-    "";
+    ) => _ = "";
     
   let make =
     (
@@ -116,56 +67,96 @@ module Row = {
       ~style=?,
       ~prefixCls=?,
       children
-    ) =>
-    switch gutter {
-    | Some(Simple(gutterInt)) => {
+    ) => {
+      let propsBase = makePropsGutter(~className?, ~_type?, ~align?, ~justify?, ~style?, ~prefixCls?, ());
+
+      let props = propsBase |> addEitherProp("gutter",gutter);
+  
       ReasonReact.wrapJsForReason(
         ~reactClass,
-        ~props=
-          makePropsGutterInt(
-            ~className?,
-            ~gutter=gutterInt,
-            ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
-            ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align),
-            ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify),
-            ~style?,
-            ~prefixCls?,
-            ()
-          ),
-        children
-      );
-    }
-    | Some(BreakpointMap(breakpointMap)) => {
-      ReasonReact.wrapJsForReason(
-          ~reactClass,
-          ~props=
-            makePropsGutterObj(
-              ~className?,
-              ~gutter=breakpointMap,
-              ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
-              ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align),
-              ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify),
-              ~style?,
-              ~prefixCls?,
-              ()
-            ),
-          children
-        );
-    }
-    | None => 
-    ReasonReact.wrapJsForReason(
-        ~reactClass,
-        ~props=
-          makePropsGutterObj(
-            ~className?,
-            ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
-            ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align),
-            ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify),
-            ~style?,
-            ~prefixCls?,
-            ()
-          ),
+        ~props,
         children
       );
     };
 };
+
+module Col = {
+  [@bs.module]
+  external reactClass : ReasonReact.reactClass = "antd/lib/grid/col";
+
+  [@bs.obj] external _colSizeMap: 
+    (
+      ~span: int=?,
+      ~order: int=?,
+      ~offset: int=?,
+      ~push: int=?,
+      ~pull: int=?,
+      unit
+    ) => _ = "";
+
+  let simpleColSize = x => SimpleProp(x);
+
+  let complexColSize = (~span=?,~order=?,~offset=?,~push=?,~pull=?,())=> 
+    ObjectProp(_colSizeMap(
+      ~span =? span, 
+      ~order =? order, 
+      ~offset =? offset, 
+      ~push =? push, 
+      ~pull =? pull, 
+      ()));
+
+  [@bs.obj]
+  external makePropsColBase:
+    (
+      ~className: string=?,
+      ~span: int=?,
+      ~order: int=?,
+      ~offset: int=?,
+      ~push: int=?,
+      ~pull: int=?,
+      ~prefixCls: string=?,
+      ~style: ReactDOMRe.Style.t=?,
+      unit
+    ) =>
+    _ =
+    "";
+
+  let make =
+    (
+      ~className=?,
+      ~span=?,
+      ~order=?,
+      ~offset=?,
+      ~push=?,
+      ~pull=?,
+      ~xs=?,
+      ~sm=?,
+      ~md=?,
+      ~lg=?,
+      ~xl=?,
+      ~xxl=?,
+      ~prefixCls=?,
+      ~style=?,
+      children
+    ) => {
+      let propsBase = makePropsColBase(
+        ~className?,
+        ~span?,
+        ~order?,
+        ~offset?,
+        ~push?,
+        ~pull?,
+        ~prefixCls?,
+        ~style?,
+        ()
+      );
+
+      let props = propsBase |> addEitherProp("xs",xs) |> addEitherProp("sm",sm) |> addEitherProp("md",md) |> addEitherProp("lg",lg) |> addEitherProp("xl",xl) |> addEitherProp("xxl",xxl);
+
+      ReasonReact.wrapJsForReason(
+        ~reactClass,
+        ~props,
+        children
+      );
+    }
+}
