@@ -15,3 +15,7 @@ module Menu = Antd_Menu;
 module Avatar = Antd_Avatar;
 
 module Grid = Antd_Grid;
+
+module TimePicker = Antd_TimePicker;
+
+module DatePicker = Antd_DatePicker;
