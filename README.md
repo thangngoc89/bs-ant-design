@@ -55,6 +55,10 @@ Some common patterns I used:
 
 * [x] 🔗 Layout
 
+* [x] 🔗 Grid
+
+* [x] 🔗 Avatar
+
 * [x] 🔗 Menu
 
 ## Contributions
