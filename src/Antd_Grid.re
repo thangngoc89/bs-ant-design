@@ -36,11 +36,11 @@ module Row = {
   let breakpointGutter = (~xs=?,~sm=?,~md=?,~lg=?,~xl=?,~xxl=?,()) => {
     /* ant design uses strings here even though it makes more sense to be number */
     ObjectProp(_gutterBreakpointMap(
-      ~xs =? xs |> Js.Option.map([@bs] (b => string_of_int(b))),
-      ~sm =? sm |> Js.Option.map([@bs] (b => string_of_int(b))),
-      ~md =? md |> Js.Option.map([@bs] (b => string_of_int(b))),
-      ~lg =? lg |> Js.Option.map([@bs] (b => string_of_int(b))),
-      ~xl =? xl |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~xs  =? xs  |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~sm  =? sm  |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~md  =? md  |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~lg  =? lg  |> Js.Option.map([@bs] (b => string_of_int(b))),
+      ~xl  =? xl  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~xxl =? xxl |> Js.Option.map([@bs] (b => string_of_int(b))),
       ()))
   };
