@@ -15,3 +15,7 @@ module IconName = Antd_IconName;
 module Layout = Antd_Layout;
 
 module Menu = Antd_Menu;
+
+module Radio = Antd_Radio;
+
+module Spin = Antd_Spin;
