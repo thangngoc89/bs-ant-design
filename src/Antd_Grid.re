@@ -15,19 +15,20 @@ module Row = {
     | `spaceAround
     | `spaceBetween
   ];
-
   type gutterBreakpoints;
-  [@bs.obj] external makeStringGutterConfig: 
-  (
-    ~xs: string=?,
-    ~sm: string=?,
-    ~md: string=?,
-    ~lg: string=?,
-    ~xl: string=?,
-    ~xxl: string=?,
-    unit
-  ) => gutterBreakpoints = "";
-
+  [@bs.obj]
+  external makeStringGutterConfig :
+    (
+      ~xs: string=?,
+      ~sm: string=?,
+      ~md: string=?,
+      ~lg: string=?,
+      ~xl: string=?,
+      ~xxl: string=?,
+      unit
+    ) =>
+    gutterBreakpoints =
+    "";
   let makeGutterBreakpoints = (~xs=?, ~sm=?, ~md=?, ~lg=?, ~xl=?, ~xxl=?, ()) =>
     /* ant design uses strings here even though it makes more sense to be number */
     makeStringGutterConfig(
@@ -39,17 +40,14 @@ module Row = {
       ~xxl=?xxl |> Js.Option.map([@bs] (b => string_of_int(b))),
       ()
     );
-
-  type gutter(_) = 
+  type gutter(_) =
     | SingleGutterInPx(int): gutter(int)
     | ResponsiveBreakpoints(gutterBreakpoints): gutter(gutterBreakpoints);
-
-  let gutterToProp = (type a, gutter: gutter(a)): a =>
+  let gutterToProp = (type a, gutter: gutter(a)) : a =>
     switch gutter {
     | SingleGutterInPx(int) => int
     | ResponsiveBreakpoints(complexGutter) => complexGutter
     };
-
   [@bs.obj]
   external makeProps :
     (
@@ -95,7 +93,6 @@ module Row = {
 module Col = {
   [@bs.module]
   external reactClass : ReasonReact.reactClass = "antd/lib/grid/col";
-
   type fullColSize;
   [@bs.obj]
   external makeColSize :
@@ -109,19 +106,16 @@ module Col = {
     ) =>
     fullColSize =
     "";
-
-  type colSize(_) = 
+  type colSize(_) =
     | SingleColSize(int): colSize(int)
     | FullColSize(fullColSize): colSize(fullColSize);
-
-  let colSizeToProp = (type a, colSize: colSize(a)): a =>
+  let colSizeToProp = (type a, colSize: colSize(a)) : a =>
     switch colSize {
     | SingleColSize(int) => int
     | FullColSize(fullColSize) => fullColSize
     };
-
   [@bs.obj]
-  external makeProps:
+  external makeProps :
     (
       ~className: string=?,
       ~span: int=?,
@@ -182,3 +176,7 @@ module Col = {
       children
     );
 };
+
+let makeGutterBreakpoints = Row.makeGutterBreakpoints;
+
+let makeColSize = Col.makeColSize;
