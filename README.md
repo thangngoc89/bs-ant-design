@@ -100,6 +100,10 @@ Typesafe way (only way) to access icon's name
 
 #### 🔗 Menu
 
+#### 🔗 Radio
+
+#### 🔗 Spin
+
 ---
 
 ## Contributions
