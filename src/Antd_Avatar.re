@@ -12,7 +12,7 @@ type avatarSize = [ | `small | `default | `large];
 
 [@bs.obj]
 external makeProps :
-(
+  (
     ~shape: string=?,
     ~size: string=?,
     ~src: string=?,
@@ -22,18 +22,21 @@ external makeProps :
     ~className: string=?,
     ~style: ReactDOMRe.Style.t=?,
     unit
-) =>_ = "";
+  ) =>
+  _ =
+  "";
+
 let make =
     (
-        ~shape=?,
-        ~size=?,
-        ~src=?,
-        ~icon=?,
-        ~prefixCls=?,
-        ~id=?,
-        ~className=?,
-        ~style=?,
-        children
+      ~shape=?,
+      ~size=?,
+      ~src=?,
+      ~icon=?,
+      ~prefixCls=?,
+      ~id=?,
+      ~className=?,
+      ~style=?,
+      children
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
