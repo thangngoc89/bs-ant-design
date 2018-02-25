@@ -2,7 +2,7 @@ let from_bool = Js.Boolean.to_js_boolean;
 
 [@bs.set_index] external _set: (Js.t({..}), string, 'a) => unit = "";
 
-let addAnyProp = (propname: string, prop: option('a), acc) => switch prop {
+let addOptAnyProp = (propname: string, prop: option('a), acc) => switch prop {
   | Some(a) => {_set(acc,propname,a); acc}
   | None => acc
 };

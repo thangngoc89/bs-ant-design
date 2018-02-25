@@ -68,7 +68,7 @@ module Row = {
     ) => {
       let propsBase = makePropsGutter(~className?, ~_type?, ~align?, ~justify?, ~style?, ~prefixCls?, ());
 
-      let props = propsBase |> addAnyProp("gutter",gutter);
+      let props = propsBase |> addOptAnyProp("gutter",gutter);
   
       ReasonReact.wrapJsForReason(
         ~reactClass,
@@ -147,7 +147,7 @@ module Col = {
         ()
       );
 
-      let props = propsBase |> addAnyProp("xs",xs) |> addAnyProp("sm",sm) |> addAnyProp("md",md) |> addAnyProp("lg",lg) |> addAnyProp("xl",xl) |> addAnyProp("xxl",xxl);
+      let props = propsBase |> addOptAnyProp("xs",xs) |> addOptAnyProp("sm",sm) |> addOptAnyProp("md",md) |> addOptAnyProp("lg",lg) |> addOptAnyProp("xl",xl) |> addOptAnyProp("xxl",xxl);
 
       ReasonReact.wrapJsForReason(
         ~reactClass,
