@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [%bs.raw {|require("antd/lib/grid/style")|}];
 module Row = {
   [@bs.module]
@@ -20,7 +18,7 @@ module Row = {
     | `spaceBetween
   ];
 
-  [@bs.obj] external _gutterBreakpointMap: 
+  [@bs.obj] external gutterBreakpointMap: 
     (
       ~xs: string=?,
       ~sm: string=?,
@@ -33,7 +31,7 @@ module Row = {
 
   let breakpointGutter = (~xs=?,~sm=?,~md=?,~lg=?,~xl=?,~xxl=?,()) => {
     /* ant design uses strings here even though it makes more sense to be number */
-    _gutterBreakpointMap(
+    gutterBreakpointMap(
       ~xs  =? xs  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~sm  =? sm  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~md  =? md  |> Js.Option.map([@bs] (b => string_of_int(b))),
@@ -44,12 +42,13 @@ module Row = {
   };
 
   [@bs.obj]
-  external makePropsGutter :
+  external makePropsBase :
     (
       ~className: string=?,
       ~_type: string=?,
       ~align: string=?,
       ~justify: string=?,
+      ~gutter: 'a=?,
       ~style: ReactDOMRe.Style.t=?,
       ~prefixCls: string=?,
       unit
@@ -66,20 +65,17 @@ module Row = {
       ~prefixCls=?,
       children
     ) => {
-      let propsBase = makePropsGutter(
-        ~className?, 
-        ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
-        ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align), 
-        ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify), 
-        ~style?, 
-        ~prefixCls?, 
-        ());
-
-      let props = propsBase |> addOptAnyProp("gutter",gutter);
-  
       ReasonReact.wrapJsForReason(
         ~reactClass,
-        ~props,
+        ~props=makePropsBase(
+          ~className?, 
+          ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
+          ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align), 
+          ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify), 
+          ~gutter?,
+          ~style?, 
+          ~prefixCls?, 
+          ()),
         children
       );
     };
@@ -98,7 +94,6 @@ module Col = {
       ~pull: int=?,
       unit
     ) => _ = "";
-
   let complexColSize = (~span=?,~order=?,~offset=?,~push=?,~pull=?,())=> 
     _colSizeMap(
       ~span =? span, 
@@ -117,6 +112,12 @@ module Col = {
       ~offset: int=?,
       ~push: int=?,
       ~pull: int=?,
+      ~xs: 'a=?,
+      ~sm: 'b=?,
+      ~md: 'c=?,
+      ~lg: 'd=?,
+      ~xl: 'e=?,
+      ~xxl: 'f=?,
       ~prefixCls: string=?,
       ~style: ReactDOMRe.Style.t=?,
       unit
@@ -141,25 +142,26 @@ module Col = {
       ~prefixCls=?,
       ~style=?,
       children
-    ) => {
-      let propsBase = makePropsColBase(
-        ~className?,
-        ~span?,
-        ~order?,
-        ~offset?,
-        ~push?,
-        ~pull?,
-        ~prefixCls?,
-        ~style?,
-        ()
-      );
-
-      let props = propsBase |> addOptAnyProp("xs",xs) |> addOptAnyProp("sm",sm) |> addOptAnyProp("md",md) |> addOptAnyProp("lg",lg) |> addOptAnyProp("xl",xl) |> addOptAnyProp("xxl",xxl);
-
+    ) =>
       ReasonReact.wrapJsForReason(
         ~reactClass,
-        ~props,
+        ~props=makePropsColBase(
+          ~className?,
+          ~span?,
+          ~order?,
+          ~offset?,
+          ~push?,
+          ~pull?,
+          ~xs?,
+          ~sm?,
+          ~md?,
+          ~lg?,
+          ~xl?,
+          ~xxl?,
+          ~prefixCls?,
+          ~style?,
+          ()
+        ),
         children
       );
-    }
 }

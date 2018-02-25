@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 module IconName = Antd_IconName;
 
 [@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/avatar";
@@ -19,21 +17,22 @@ external makeProps :
     ~size: string=?,
     ~src: string=?,
     ~icon: IconName.t=?,
-    ~style: ReactDOMRe.Style.t=?,
     ~prefixCls: string=?,
+    ~id: string=?,
     ~className: string=?,
+    ~style: ReactDOMRe.Style.t=?,
     unit
 ) =>_ = "";
-
 let make =
     (
         ~shape=?,
         ~size=?,
         ~src=?,
         ~icon=?,
-        ~style=?,
         ~prefixCls=?,
+        ~id=?,
         ~className=?,
+        ~style=?,
         children
     ) =>
   ReasonReact.wrapJsForReason(
@@ -44,9 +43,10 @@ let make =
         ~size=?Js.Option.map([@bs] (b => avatarSizeToJs(b)), size),
         ~src?,
         ~icon?,
-        ~style?,
         ~prefixCls?,
+        ~id?,
         ~className?,
+        ~style?,
         ()
       ),
     children

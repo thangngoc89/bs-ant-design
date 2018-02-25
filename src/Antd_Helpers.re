@@ -1,12 +1,5 @@
 let from_bool = Js.Boolean.to_js_boolean;
 
-[@bs.set_index] external _set: (Js.t({..}), string, 'a) => unit = "";
-
-let addOptAnyProp = (propname: string, prop: option('a), acc) => switch prop {
-  | Some(a) => {_set(acc,propname,a); acc}
-  | None => acc
-};
-
 [@bs.deriving jsConverter]
 type breakpoint = [
   | [@bs.as "xs"] `Xs
