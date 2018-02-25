@@ -1,14 +1,9 @@
 let from_bool = Js.Boolean.to_js_boolean;
 
-type eitherProp('a,'b) = 
-  | SimpleProp('a)
-  | ObjectProp('b);
-
 [@bs.set_index] external _set: (Js.t({..}), string, 'a) => unit = "";
 
-let addEitherProp = (propname: string, prop, acc) => switch prop {
-  | Some(SimpleProp(a)) => {_set(acc,propname,a); acc}
-  | Some(ObjectProp(b)) => {_set(acc,propname,b); acc}
+let addAnyProp = (propname: string, prop: option('a), acc) => switch prop {
+  | Some(a) => {_set(acc,propname,a); acc}
   | None => acc
 };
 

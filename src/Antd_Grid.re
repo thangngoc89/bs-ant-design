@@ -31,18 +31,16 @@ module Row = {
       unit
     ) => _ = "";
 
-  let simpleGutter = x => SimpleProp(x);
-
   let breakpointGutter = (~xs=?,~sm=?,~md=?,~lg=?,~xl=?,~xxl=?,()) => {
     /* ant design uses strings here even though it makes more sense to be number */
-    ObjectProp(_gutterBreakpointMap(
+    _gutterBreakpointMap(
       ~xs  =? xs  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~sm  =? sm  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~md  =? md  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~lg  =? lg  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~xl  =? xl  |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~xxl =? xxl |> Js.Option.map([@bs] (b => string_of_int(b))),
-      ()))
+      ())
   };
 
   [@bs.obj]
@@ -70,7 +68,7 @@ module Row = {
     ) => {
       let propsBase = makePropsGutter(~className?, ~_type?, ~align?, ~justify?, ~style?, ~prefixCls?, ());
 
-      let props = propsBase |> addEitherProp("gutter",gutter);
+      let props = propsBase |> addAnyProp("gutter",gutter);
   
       ReasonReact.wrapJsForReason(
         ~reactClass,
@@ -94,16 +92,14 @@ module Col = {
       unit
     ) => _ = "";
 
-  let simpleColSize = x => SimpleProp(x);
-
   let complexColSize = (~span=?,~order=?,~offset=?,~push=?,~pull=?,())=> 
-    ObjectProp(_colSizeMap(
+    _colSizeMap(
       ~span =? span, 
       ~order =? order, 
       ~offset =? offset, 
       ~push =? push, 
       ~pull =? pull, 
-      ()));
+      ());
 
   [@bs.obj]
   external makePropsColBase:
@@ -151,7 +147,7 @@ module Col = {
         ()
       );
 
-      let props = propsBase |> addEitherProp("xs",xs) |> addEitherProp("sm",sm) |> addEitherProp("md",md) |> addEitherProp("lg",lg) |> addEitherProp("xl",xl) |> addEitherProp("xxl",xxl);
+      let props = propsBase |> addAnyProp("xs",xs) |> addAnyProp("sm",sm) |> addAnyProp("md",md) |> addAnyProp("lg",lg) |> addAnyProp("xl",xl) |> addAnyProp("xxl",xxl);
 
       ReasonReact.wrapJsForReason(
         ~reactClass,
