@@ -15,22 +15,22 @@ module Row = {
     | `spaceAround
     | `spaceBetween
   ];
-  [@bs.obj]
-  external gutterBreakpointMap :
-    (
-      ~xs: string=?,
-      ~sm: string=?,
-      ~md: string=?,
-      ~lg: string=?,
-      ~xl: string=?,
-      ~xxl: string=?,
-      unit
-    ) =>
-    _ =
-    "";
-  let breakpointGutter = (~xs=?, ~sm=?, ~md=?, ~lg=?, ~xl=?, ~xxl=?, ()) =>
+
+  type gutterBreakpoints;
+  [@bs.obj] external makeStringGutterConfig: 
+  (
+    ~xs: string=?,
+    ~sm: string=?,
+    ~md: string=?,
+    ~lg: string=?,
+    ~xl: string=?,
+    ~xxl: string=?,
+    unit
+  ) => gutterBreakpoints = "";
+
+  let makeGutterBreakpoints = (~xs=?, ~sm=?, ~md=?, ~lg=?, ~xl=?, ~xxl=?, ()) =>
     /* ant design uses strings here even though it makes more sense to be number */
-    gutterBreakpointMap(
+    makeStringGutterConfig(
       ~xs=?xs |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~sm=?sm |> Js.Option.map([@bs] (b => string_of_int(b))),
       ~md=?md |> Js.Option.map([@bs] (b => string_of_int(b))),
@@ -39,8 +39,19 @@ module Row = {
       ~xxl=?xxl |> Js.Option.map([@bs] (b => string_of_int(b))),
       ()
     );
+
+  type gutter(_) = 
+    | SingleGutterInPx(int): gutter(int)
+    | ResponsiveBreakpoints(gutterBreakpoints): gutter(gutterBreakpoints);
+
+  let gutterToProp = (type a, gutter: gutter(a)): a =>
+    switch gutter {
+    | SingleGutterInPx(int) => int
+    | ResponsiveBreakpoints(complexGutter) => complexGutter
+    };
+
   [@bs.obj]
-  external makePropsBase :
+  external makeProps :
     (
       ~className: string=?,
       ~_type: string=?,
@@ -67,12 +78,12 @@ module Row = {
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
-        makePropsBase(
+        makeProps(
           ~className?,
           ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
           ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align),
           ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify),
-          ~gutter?,
+          ~gutter=?Js.Option.map([@bs] (b => gutterToProp(b)), gutter),
           ~style?,
           ~prefixCls?,
           ()
@@ -84,8 +95,10 @@ module Row = {
 module Col = {
   [@bs.module]
   external reactClass : ReasonReact.reactClass = "antd/lib/grid/col";
+
+  type fullColSize;
   [@bs.obj]
-  external _colSizeMap :
+  external makeColSize :
     (
       ~span: int=?,
       ~order: int=?,
@@ -94,12 +107,21 @@ module Col = {
       ~pull: int=?,
       unit
     ) =>
-    _ =
+    fullColSize =
     "";
-  let complexColSize = (~span=?, ~order=?, ~offset=?, ~push=?, ~pull=?, ()) =>
-    _colSizeMap(~span?, ~order?, ~offset?, ~push?, ~pull?, ());
+
+  type colSize(_) = 
+    | SingleColSize(int): colSize(int)
+    | FullColSize(fullColSize): colSize(fullColSize);
+
+  let colSizeToProp = (type a, colSize: colSize(a)): a =>
+    switch colSize {
+    | SingleColSize(int) => int
+    | FullColSize(fullColSize) => fullColSize
+    };
+
   [@bs.obj]
-  external makePropsColBase :
+  external makeProps:
     (
       ~className: string=?,
       ~span: int=?,
@@ -140,19 +162,19 @@ module Col = {
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
-        makePropsColBase(
+        makeProps(
           ~className?,
           ~span?,
           ~order?,
           ~offset?,
           ~push?,
           ~pull?,
-          ~xs?,
-          ~sm?,
-          ~md?,
-          ~lg?,
-          ~xl?,
-          ~xxl?,
+          ~xs=?Js.Option.map([@bs] (b => colSizeToProp(b)), xs),
+          ~sm=?Js.Option.map([@bs] (b => colSizeToProp(b)), sm),
+          ~md=?Js.Option.map([@bs] (b => colSizeToProp(b)), md),
+          ~lg=?Js.Option.map([@bs] (b => colSizeToProp(b)), lg),
+          ~xl=?Js.Option.map([@bs] (b => colSizeToProp(b)), xl),
+          ~xxl=?Js.Option.map([@bs] (b => colSizeToProp(b)), xxl),
           ~prefixCls?,
           ~style?,
           ()
