@@ -66,7 +66,14 @@ module Row = {
       ~prefixCls=?,
       children
     ) => {
-      let propsBase = makePropsGutter(~className?, ~_type?, ~align?, ~justify?, ~style?, ~prefixCls?, ());
+      let propsBase = makePropsGutter(
+        ~className?, 
+        ~_type=?Js.Option.map([@bs] (b => rowTypeToJs(b)), _type),
+        ~align=?Js.Option.map([@bs] (b => rowAlignToJs(b)), align), 
+        ~justify=?Js.Option.map([@bs] (b => rowJustifyToJs(b)), justify), 
+        ~style?, 
+        ~prefixCls?, 
+        ());
 
       let props = propsBase |> addOptAnyProp("gutter",gutter);
   
