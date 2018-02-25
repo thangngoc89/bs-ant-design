@@ -14,7 +14,7 @@ module Row = {
   [@bs.deriving jsConverter]
   type rowJustify = [
     | `start
-    | `end_
+    | [@bs.as "end"] `end_
     | `center
     | `spaceAround
     | `spaceBetween
