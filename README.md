@@ -92,13 +92,15 @@ open Antd.Grid;
 
 This uses IconName
 
-## ️🆕 IconName
+#### ️🆕 IconName
 
 Typesafe way (only way) to access icon's name
 
-## 🔗 Layout
+#### 🔗 Layout
 
-## 🔗 Menu
+#### 🔗 Menu
+
+---
 
 ## Contributions
 
