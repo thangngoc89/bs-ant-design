@@ -11,6 +11,7 @@ type moment = MomentRe.Moment.t;
 type pickerSize = [ | `small | `default | `large];
 
 type t('a) = Js.t({. timePickerProps: int} as 'a);
+
 [@bs.obj]
 external makeProps :
   (
@@ -46,7 +47,6 @@ external makeProps :
   ) =>
   t(_) =
   "";
-
 
 let make =
     (
