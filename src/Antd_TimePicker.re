@@ -10,44 +10,43 @@ type moment = MomentRe.Moment.t;
 [@bs.deriving jsConverter]
 type pickerSize = [ | `small | `default | `large];
 
-module TimePickerProps = {
-  type t('a) = Js.t({. timePickerProps: int} as 'a);
-  [@bs.obj]
-  external make :
-    (
-      ~size: string=?,
-      ~value: moment=?,
-      ~defaultValue: moment=?, /* should be moment | moment[] */
-      ~_open: Js.boolean=?,
-      ~format: string=?,
-      ~onChange: (moment, string) => unit=?,
-      ~onOpenChange: Js.boolean => unit=?,
-      ~disabled: Js.boolean=?,
-      ~placeholder: string=?,
-      ~prefixCls: string=?,
-      ~hideDisabledOptions: Js.boolean=?,
-      ~disabledHours: unit => array(int)=?,
-      ~disabledMinutes: int => array(int)=?,
-      ~disabledSEconds: (int, int) => array(int)=?,
-      ~getPopupContainer: Dom.element => Dom.htmlElement=?,
-      ~addon: 'a=?,
-      ~use12Hours: Js.boolean=?,
-      ~focusOnOpen: Js.boolean=?,
-      ~hourStep: int=?,
-      ~minuteStep: int=?,
-      ~secondStep: int=?,
-      ~allowEmpty: Js.boolean=?,
-      ~clearText: Js.boolean=?,
-      ~defaultOpenValue: moment=?,
-      ~popupClassName: string=?,
-      ~id: string=?,
-      ~className: string=?,
-      ~style: ReactDOMRe.Style.t=?,
-      unit
-    ) =>
-    t(_) =
-    "";
-};
+type t('a) = Js.t({. timePickerProps: int} as 'a);
+[@bs.obj]
+external makeProps :
+  (
+    ~size: string=?,
+    ~value: moment=?,
+    ~defaultValue: moment=?, /* should be moment | moment[] */
+    ~_open: Js.boolean=?,
+    ~format: string=?,
+    ~onChange: (moment, string) => unit=?,
+    ~onOpenChange: Js.boolean => unit=?,
+    ~disabled: Js.boolean=?,
+    ~placeholder: string=?,
+    ~prefixCls: string=?,
+    ~hideDisabledOptions: Js.boolean=?,
+    ~disabledHours: unit => array(int)=?,
+    ~disabledMinutes: int => array(int)=?,
+    ~disabledSEconds: (int, int) => array(int)=?,
+    ~getPopupContainer: Dom.element => Dom.htmlElement=?,
+    ~addon: 'a=?,
+    ~use12Hours: Js.boolean=?,
+    ~focusOnOpen: Js.boolean=?,
+    ~hourStep: int=?,
+    ~minuteStep: int=?,
+    ~secondStep: int=?,
+    ~allowEmpty: Js.boolean=?,
+    ~clearText: Js.boolean=?,
+    ~defaultOpenValue: moment=?,
+    ~popupClassName: string=?,
+    ~id: string=?,
+    ~className: string=?,
+    ~style: ReactDOMRe.Style.t=?,
+    unit
+  ) =>
+  t(_) =
+  "";
+
 
 let make =
     (
@@ -84,7 +83,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
-      TimePickerProps.make(
+      makeProps(
         ~size=?Js.Option.map([@bs] (b => pickerSizeToJs(b)), size),
         ~value?,
         ~defaultValue?,
