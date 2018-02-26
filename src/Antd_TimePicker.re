@@ -16,7 +16,7 @@ external makeProps :
   (
     ~size: string=?,
     ~value: moment=?,
-    ~defaultValue: moment=?, /* should be moment | moment[] */
+    ~defaultValue: moment=?,
     ~_open: Js.boolean=?,
     ~format: string=?,
     ~onChange: (moment, string) => unit=?,
