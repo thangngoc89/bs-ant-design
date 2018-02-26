@@ -8,8 +8,8 @@ external reactClass : ReasonReact.reactClass = "antd/lib/date-picker";
 
 [@bs.deriving jsConverter]
 type pickerSize = [ | `small | `default | `large];
+type moment = MomentRe.Moment.t;
 
-type moment;
 type boolOrTimePickerProps(_) =
   | Bool(bool): boolOrTimePickerProps(Js.boolean)
   | TimePickerProps(Antd_TimePicker.timePickerProps('a)): boolOrTimePickerProps(Antd_TimePicker.timePickerProps('a));
@@ -124,11 +124,10 @@ let make =
       ),
     children
   );
-  
+
   module RangePicker {
     [@bs.module "antd/lib/date-picker"]
     external reactClass : ReasonReact.reactClass = "RangePicker";
-
     type rangePickerProps('a) = Js.t( {. rangePickerProps: int, } as 'a);
     [@bs.obj]
     external makeRangePickerProps :
@@ -241,99 +240,11 @@ let make =
   };
   
   module MonthPicker {
+    [@bs.module "antd/lib/date-picker"]
+    external reactClass : ReasonReact.reactClass = "MonthPicker";
   };
   
   module WeekPicker {
+    [@bs.module "antd/lib/date-picker"]
+    external reactClass : ReasonReact.reactClass = "WeekPicker";
   };
-/*
-[@bs.obj]
-external makeCommonProps :
-  (
-    ~allowClear: bool=?,
-    ~autoFocus: bool=?,
-    ~dateRender: (moment, moment) => ReasonReact.reactElement =?,
-    ~disabled: bool=?,
-    ~disabledDate: (moment) => bool=?,
-    ~getCalendarContainer: ('a) => 'b =?, /* todo: (triggerNode: Element) => HTMLElement */
-    ~locale: 'c=?,
-    ~open_: bool=?, /* todo: what do we do about open_ */
-    ~placeholder: 'd, /* todo: string|RangePicker[] */
-    ~popupStyle: ReactDOMRe.Style.t=?,
-    ~size: string=?,
-    ~onOpenChange: (bool)=> unit=?,
-    ~id: string=?,
-    ~className: string=?,
-    ~style: ReactDOMRe.Style.t=?,
-    unit
-  ) =>
-  _ =
-  "";
-
-type pickerProps('a) = Js.t( {. /* whats in here doesn't matter as long as it's unique */ pickerProps: int, } as 'a);
-[@bs.obj]
-external makePickerProps : 
-  (
-    ~prefixCls: string=?,
-    ~inputPrefixCls: string=?,
-    ~format: string=?,
-    ~renderExtraFooter: unit => ReasonReact.reactElement =?,
-    unit
-  ) =>
-  pickerProps(_) =
-  "";
-
-type singlePickerProps('a) = Js.t( {. singlePickerProps: int, } as 'a);
-[@bs.obj]
-external makeSinglePickerProps : 
-  (
-    ~value: moment=?,
-    ~defaultValue: moment=?,
-    ~defaultPickerValue: moment=?,
-    ~onChange: (moment, string) => unit=?,
-    unit
-  ) =>
-  singlePickerProps(_)=
-  "";
-
-let make = (~format=?, children) =>
-    ReasonReact.wrapJsForReason(
-      ~reactClass=reactClass,
-      ~props=makePickerProps(~format?, ()),
-      children
-    );
-
-[@bs.obj]
-external makeDatePickerProps : 
-  (
-    ~showTime: 'a=?, /* todo: TimePickerProps | boolean; */
-    ~showToday: bool=?,
-    ~disabledTime: 'b=?, /* todo: (current: moment.Moment) => { disabledHours?: () => number[],disabledMinutes?: () => number[], disabledSeconds?: () => number[],}; */
-    ~onOk: (moment) => unit,
-    unit
-  ) =>
-  _ =
-  "";
-
-type rangePickerValue = int;
-
-type stringOrStringArray = int;
-
-[@bs.obj]
-external makeRangePickerProps :
-  (
-    ~ranges: 'a=?, /* todo: {[range: string]: RangePickerPresetRange,}; */
-    ~mode: 'b=?, /* string| string[] */
-    ~onPanelChange: (rangePickerValue, stringOrStringArray) => unit=?,
-    unit
-  ) =>
-  _ =
-  "";
-
-let make = (~name, ~age=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=reactClass,
-    ~props=makeSinglePickerProps(~value=4,()),
-    children
-  );
-
-  */
