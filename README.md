@@ -106,6 +106,8 @@ Typesafe way (only way) to access icon's name
 
 #### 🔗 Spin
 
+#### 🔗 TimePicker
+
 ---
 
 ## Contributions
