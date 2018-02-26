@@ -43,25 +43,70 @@ Some common patterns I used:
 
 ### Implemented components
 
-* [x] 🔗 Breadcrumb
+#### 🔗 Avatar
 
-* [x] 🔗 Button
+#### 🔗 Breadcrumb
 
-* [x] 🔗 DatePicker
+#### 🔗 Button
 
-* [x] 🔗 Divider
+#### 🔗 Divider
 
-* [x] ✍️ Icon - This uses IconName
+#### 🔗 DatePicker
 
-* [x] ️🆕 IconName - Typesafe way (only way) to access icon's name
+#### 🔗 Grid
 
-* [x] 🔗 Layout
+Usage:
 
-* [x] 🔗 Grid
+* Single gutter size in pixels:
 
-* [x] 🔗 Avatar
+```reason
+open Antd.Grid;
 
-* [x] 🔗 Menu
+<Row gutter=Row.SingleGutterInPx(4) align=`top>
+    <Col span=12 xs=Col.FullColSize(makeColSize(~span=5,()))>  
+        (ReasonReact.stringToElement("A"))
+    </Col>
+    <Col span=8 xs=Col.SingleColSize(4)>  
+        (ReasonReact.stringToElement("B"))
+    </Col>
+</Row>
+```
+
+* Responsive gutter:
+
+```reason
+open Antd.Grid;
+
+<Row gutter=Row.ResponsiveBreakpoints(makeGutterBreakpoints(~sm=5, ()))>
+    <Col span=8>  
+        (ReasonReact.stringToElement("A"))
+    </Col>
+    <Col span=8>  
+        (ReasonReact.stringToElement("B"))
+    </Col>
+    <Col span=8>  
+        (ReasonReact.stringToElement("C"))
+    </Col>
+</Row>
+```
+
+#### ✍️ Icon
+
+This uses IconName
+
+#### ️🆕 IconName
+
+Typesafe way (only way) to access icon's name
+
+#### 🔗 Layout
+
+#### 🔗 Menu
+
+#### 🔗 Radio
+
+#### 🔗 Spin
+
+---
 
 ## Contributions
 
