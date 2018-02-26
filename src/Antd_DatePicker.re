@@ -143,7 +143,7 @@ module RangePicker = {
         ~showTime: 'f=?, /* TimePickerProps | boolean; */
         ~ranges: 'g=?, /* todo: {[range: string]: RangePickerPresetRange,}; */
         ~placeholder: (string, string)=?,
-        ~mode: array(string)=?, /* todo: how do i do ? string | string[]; */
+        ~mode: string=?, /* todo: how do i do ? string | string[]; */
         ~disabledTime: (moment, string) => 'h=?, /* todo: (current: moment.Moment, type: string) => { disabledHours?: () => number[],disabledMinutes?: () => number[], disabledSeconds?: () => number[],}; */
         ~onPanelChange: 'i=?, /* todo: onPanelChange?: (value?: RangePickerValue, mode?: string | string[]) => void;*/
         /*export interface PickerProps*/
