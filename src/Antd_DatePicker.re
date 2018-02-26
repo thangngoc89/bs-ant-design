@@ -12,7 +12,7 @@ type moment = MomentRe.Moment.t;
 
 type boolOrTimePickerProps(_) =
   | Bool(bool): boolOrTimePickerProps(Js.boolean)
-  | TimePickerProps(Antd_TimePicker.timePickerProps('a)): boolOrTimePickerProps(Antd_TimePicker.timePickerProps('a));
+  | TimePickerProps(Antd_TimePicker.TimePickerProps.t('a)): boolOrTimePickerProps(Antd_TimePicker.TimePickerProps.t('a));
 
 let boolOrTimePickerPropsToProp =
     (type a, boolOrTimePickerProps: boolOrTimePickerProps(a))
