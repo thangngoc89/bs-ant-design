@@ -47,6 +47,8 @@ Some common patterns I used:
 
 * [x] 🔗 Button
 
+* [x] 🔗 DatePicker
+
 * [x] 🔗 Divider
 
 * [x] ✍️ Icon - This uses IconName
