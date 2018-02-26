@@ -51,6 +51,8 @@ Some common patterns I used:
 
 #### 🔗 Divider
 
+#### 🔗 DatePicker
+
 #### 🔗 Grid
 
 Usage:
