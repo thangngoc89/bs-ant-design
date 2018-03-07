@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/thangngoc89/bs-ant-design"
   },
+  "scripts": {
+    "changelog": "auto-changelog --template keepachangelog"
+  },
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
