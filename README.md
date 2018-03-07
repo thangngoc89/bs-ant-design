@@ -10,16 +10,42 @@ I also attempted to rewrite the components when possible for a better integratio
 
 ## Installation
 
-With npm:
+* With npm:
 
 ```
 npm install --save bs-ant-design
 ```
 
-With yarn:
+* With yarn:
 
 ```
 yarn add bs-ant-design
+```
+
+* Add `bs-ant-design` to `bs-dependencies` in `bsconfig.json`.
+* You also need to set up your bundler to handle less files (This is a requirement from ant-design)
+
+For webpack, you can do this:
+
+```
+npm install --save-dev less@^2.7.3 less-loader css-loader style-loader
+```
+
+(`less@^2.7.3` is the important bit)
+
+Now add this to your webpack config:
+
+```js
+// webpack.config.js
+module.exports = {
+    ...
+    module: {
+        rules: [{
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
+    }]
+}
+};
 ```
 
 ## Usage
