@@ -11,22 +11,22 @@ let make =
       ~itemRender=?,
       ~id=?,
       ~className=?,
-      ~style=?
+      ~style=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=breadcrumb,
     ~props=
       Js.Nullable.(
         {
-          "routes": from_opt(routes),
-          "params": from_opt(params),
-          "separator": from_opt(separator),
-          "itemRender": from_opt(itemRender),
-          "id": from_opt(id),
-          "className": from_opt(className),
-          "style": from_opt(style)
+          "routes": fromOption(routes),
+          "params": fromOption(params),
+          "separator": fromOption(separator),
+          "itemRender": fromOption(itemRender),
+          "id": fromOption(id),
+          "className": fromOption(className),
+          "style": fromOption(style),
         }
-      )
+      ),
   );
 
 module Item = {
@@ -48,6 +48,6 @@ module Item = {
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=makeProps(~separator?, ~href?, ~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };
