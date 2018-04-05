@@ -75,6 +75,8 @@ Some common patterns I used:
 
 #### 🔗 Button
 
+#### 🔗 Card
+
 #### 🔗 Divider
 
 #### 🔗 Grid
