@@ -34,15 +34,10 @@ module Locale = {
       };
   };
 
-  module TimePickerLocale = {
-    [@bs.deriving abstract]
-    type t = pri {placeholder: string};
-  };
-
   [@bs.deriving abstract]
   type t =
     pri {
       lang: Lang.t,
-      timePickerLocale: TimePickerLocale.t,
+      timePickerLocale: Antd_TimePicker.Locale.t,
     };
 };
