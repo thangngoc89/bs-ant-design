@@ -31,24 +31,24 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
       makeProps(
-        ~autoFocus=?Js.Option.map([@bs] (b => from_bool(b)), autoFocus),
-        ~checked=?Js.Option.map([@bs] (b => from_bool(b)), checked),
+        ~autoFocus=?Js.Option.map((. b) => from_bool(b), autoFocus),
+        ~checked=?Js.Option.map((. b) => from_bool(b), checked),
         ~defaultChecked=?
-          Js.Option.map([@bs] (b => from_bool(b)), defaultChecked),
-        ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
+          Js.Option.map((. b) => from_bool(b), defaultChecked),
+        ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
         ~value?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );
 
 module Group = {
@@ -86,24 +86,24 @@ module Group = {
         ~id=?,
         ~className=?,
         ~style=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
         makeProps(
           ~defaultValue,
-          ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
+          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
           ~name?,
           ~options?,
-          ~size=?Js.Option.map([@bs] (b => sizeToJs(b)), size),
+          ~size=?Js.Option.map((. b) => sizeToJs(b), size),
           ~value,
           ~onChange,
           ~id?,
           ~className?,
           ~style?,
-          ()
+          (),
         ),
-      children
+      children,
     );
 };

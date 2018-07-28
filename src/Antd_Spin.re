@@ -33,21 +33,21 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=spin,
     ~props=
       makeProps(
-        ~size=?Js.Option.map([@bs] (b => sizeToJs(b)), size),
-        ~spinning=?Js.Option.map([@bs] (b => from_bool(b)), spinning),
+        ~size=?Js.Option.map((. b) => sizeToJs(b), size),
+        ~spinning=?Js.Option.map((. b) => from_bool(b), spinning),
         ~tip?,
         ~delay?,
         ~wrapperClassName?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );

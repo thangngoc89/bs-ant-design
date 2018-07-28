@@ -75,31 +75,31 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
       makeProps(
-        ~_type=?Js.Option.map([@bs] (b => buttonTypeToJs(b)), _type),
+        ~_type=?Js.Option.map((. b) => buttonTypeToJs(b), _type),
         ~htmlType?,
         ~icon?,
-        ~shape=?Js.Option.map([@bs] (b => buttonShapeToJs(b)), shape),
-        ~size=?Js.Option.map([@bs] (b => buttonSizeToJs(b)), size),
+        ~shape=?Js.Option.map((. b) => buttonShapeToJs(b), shape),
+        ~size=?Js.Option.map((. b) => buttonSizeToJs(b), size),
         ~onClick?,
         ~onMouseUp?,
         ~onMouseDown?,
         ~tabIndex?,
-        ~loading=?Js.Option.map([@bs] (b => LoadingProps.toJs(b)), loading),
-        ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
-        ~ghost=?Js.Option.map([@bs] (b => from_bool(b)), ghost),
+        ~loading=?Js.Option.map((. b) => LoadingProps.toJs(b), loading),
+        ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
+        ~ghost=?Js.Option.map((. b) => from_bool(b), ghost),
         ~target?,
         ~href?,
         ~download?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );

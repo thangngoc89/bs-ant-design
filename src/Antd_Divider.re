@@ -25,12 +25,12 @@ let make = (~_type=?, ~dash=?, ~id=?, ~className=?, ~style=?, children) =>
     ~reactClass,
     ~props=
       makeProps(
-        ~_type=?Js.Option.map([@bs] (b => dividerTypeToJs(b)), _type),
-        ~dash=?Js.Option.map([@bs] (b => from_bool(b)), dash),
+        ~_type=?Js.Option.map((. b) => dividerTypeToJs(b), _type),
+        ~dash=?Js.Option.map((. b) => from_bool(b), dash),
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );

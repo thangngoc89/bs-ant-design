@@ -20,7 +20,7 @@ type clickParams = {
   .
   "key": string,
   "path": array(string),
-  "domEvent": ReactEventRe.Mouse.t
+  "domEvent": ReactEventRe.Mouse.t,
 };
 
 [@bs.obj]
@@ -73,15 +73,15 @@ let make =
       ~inlineCollapsed=?,
       ~id=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=menu,
     ~props=
       makeProps(
-        ~theme=?Js.Option.map([@bs] (b => themeToJs(b)), theme),
-        ~mode=?Js.Option.map([@bs] (b => modeToJs(b)), mode),
-        ~selectable=?Js.Option.map([@bs] (b => from_bool(b)), selectable),
+        ~theme=?Js.Option.map((. b) => themeToJs(b), theme),
+        ~mode=?Js.Option.map((. b) => modeToJs(b), mode),
+        ~selectable=?Js.Option.map((. b) => from_bool(b), selectable),
         ~selectedKeys?,
         ~defaultSelectedKeys?,
         ~openKeys?,
@@ -93,16 +93,16 @@ let make =
         ~openTransitionName?,
         ~openAnimation?,
         ~prefixCls?,
-        ~multiple=?Js.Option.map([@bs] (b => from_bool(b)), multiple),
+        ~multiple=?Js.Option.map((. b) => from_bool(b), multiple),
         ~inlineIndent?,
         ~inlineCollapsed=?
-          Js.Option.map([@bs] (b => from_bool(b)), inlineCollapsed),
+          Js.Option.map((. b) => from_bool(b), inlineCollapsed),
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );
 
 module Item = {
@@ -122,8 +122,16 @@ module Item = {
   let make = (~disabled=?, ~key_=?, ~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
-      ~props=makeProps(~key=?key_, ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled), ~id?, ~className?, ~style?, ()),
-      children
+      ~props=
+        makeProps(
+          ~key=?key_,
+          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
+          ~id?,
+          ~className?,
+          ~style?,
+          (),
+        ),
+      children,
     );
 };
 
@@ -153,22 +161,22 @@ module SubMenu = {
         ~id=?,
         ~className=?,
         ~style=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=subMenu,
       ~props=
         makeProps(
-          ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
+          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
           ~key=?key_,
           ~title?,
           ~onTitleClick?,
           ~id?,
           ~className?,
           ~style?,
-          ()
+          (),
         ),
-      children
+      children,
     );
 };
 
@@ -190,7 +198,7 @@ module ItemGroup = {
     ReasonReact.wrapJsForReason(
       ~reactClass=itemGroup,
       ~props=makeProps(~title?, ~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };
 
@@ -211,6 +219,6 @@ module Divider = {
     ReasonReact.wrapJsForReason(
       ~reactClass=divider,
       ~props=makeProps(~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };

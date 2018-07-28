@@ -36,21 +36,21 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
       makeProps(
-        ~shape=?Js.Option.map([@bs] (b => avatarShapeToJs(b)), shape),
-        ~size=?Js.Option.map([@bs] (b => avatarSizeToJs(b)), size),
+        ~shape=?Js.Option.map((. b) => avatarShapeToJs(b), shape),
+        ~size=?Js.Option.map((. b) => avatarSizeToJs(b), size),
         ~src?,
         ~icon?,
         ~prefixCls?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );
