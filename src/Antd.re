@@ -14,6 +14,8 @@ module IconName = Antd_IconName;
 
 module Layout = Antd_Layout;
 
+module LocaleProvider = Antd_LocaleProvider;
+
 module Menu = Antd_Menu;
 
 module Radio = Antd_Radio;
