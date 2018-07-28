@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module] external spin : ReasonReact.reactClass = "antd/lib/spin";
 
 [%bs.raw {|require("antd/lib/spin/style")|}];
@@ -40,7 +38,7 @@ let make =
     ~props=
       makeProps(
         ~size=?Js.Option.map((. b) => sizeToJs(b), size),
-        ~spinning=?Js.Option.map((. b) => from_bool(b), spinning),
+        ~spinning?,
         ~tip?,
         ~delay?,
         ~wrapperClassName?,

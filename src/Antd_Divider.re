@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/divider";
 
 [%bs.raw {|require("antd/lib/divider/style")|}];
@@ -26,7 +24,7 @@ let make = (~_type=?, ~dash=?, ~id=?, ~className=?, ~style=?, children) =>
     ~props=
       makeProps(
         ~_type=?Js.Option.map((. b) => dividerTypeToJs(b), _type),
-        ~dash=?Js.Option.map((. b) => from_bool(b), dash),
+        ~dash?,
         ~id?,
         ~className?,
         ~style?,

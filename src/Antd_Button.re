@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 module IconName = Antd_IconName;
 
 [@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/button";
@@ -25,7 +23,7 @@ module LoadingProps = {
   external ofDelay : delay => js = "%identity";
   let toJs: t => js =
     fun
-    | Bool(a) => a |> from_bool |> ofBool
+    | Bool(a) => a |> ofBool
     | Delay(a) => a |> ofDelay;
 };
 
@@ -91,8 +89,8 @@ let make =
         ~onMouseDown?,
         ~tabIndex?,
         ~loading=?Js.Option.map((. b) => LoadingProps.toJs(b), loading),
-        ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
-        ~ghost=?Js.Option.map((. b) => from_bool(b), ghost),
+        ~disabled?,
+        ~ghost?,
         ~target?,
         ~href?,
         ~download?,

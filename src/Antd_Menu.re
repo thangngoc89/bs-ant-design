@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module] external menu : ReasonReact.reactClass = "antd/lib/menu";
 
 [%bs.raw {|require("antd/lib/menu/style")|}];
@@ -81,7 +79,7 @@ let make =
       makeProps(
         ~theme=?Js.Option.map((. b) => themeToJs(b), theme),
         ~mode=?Js.Option.map((. b) => modeToJs(b), mode),
-        ~selectable=?Js.Option.map((. b) => from_bool(b), selectable),
+        ~selectable?,
         ~selectedKeys?,
         ~defaultSelectedKeys?,
         ~openKeys?,
@@ -93,10 +91,9 @@ let make =
         ~openTransitionName?,
         ~openAnimation?,
         ~prefixCls?,
-        ~multiple=?Js.Option.map((. b) => from_bool(b), multiple),
+        ~multiple?,
         ~inlineIndent?,
-        ~inlineCollapsed=?
-          Js.Option.map((. b) => from_bool(b), inlineCollapsed),
+        ~inlineCollapsed?,
         ~id?,
         ~className?,
         ~style?,
@@ -123,14 +120,7 @@ module Item = {
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=
-        makeProps(
-          ~key=?key_,
-          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
-          ~id?,
-          ~className?,
-          ~style?,
-          (),
-        ),
+        makeProps(~key=?key_, ~disabled?, ~id?, ~className?, ~style?, ()),
       children,
     );
 };
@@ -167,7 +157,7 @@ module SubMenu = {
       ~reactClass=subMenu,
       ~props=
         makeProps(
-          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
+          ~disabled?,
           ~key=?key_,
           ~title?,
           ~onTitleClick?,

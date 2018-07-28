@@ -1,5 +1,3 @@
-let from_bool = b => b;
-
 [@bs.deriving jsConverter]
 type breakpoint = [
   | [@bs.as "xs"] `Xs

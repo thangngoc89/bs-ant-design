@@ -97,11 +97,10 @@ module Sider = {
           ~style?,
           ~prefixCls?,
           ~className?,
-          ~collapsible=?Js.Option.map((. b) => from_bool(b), collapsible),
-          ~collapsed=?Js.Option.map((. b) => from_bool(b), collapsed),
-          ~defaultCollapsed=?
-            Js.Option.map((. b) => from_bool(b), defaultCollapsed),
-          ~reverseArrow=?Js.Option.map((. b) => from_bool(b), reverseArrow),
+          ~collapsible?,
+          ~collapsed?,
+          ~defaultCollapsed?,
+          ~reverseArrow?,
           ~onCollapse=?
             Js.Option.map(
               (. fn) => {

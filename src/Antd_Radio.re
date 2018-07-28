@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module "antd/lib/radio"]
 external reactClass : ReasonReact.reactClass = "default";
 
@@ -37,11 +35,10 @@ let make =
     ~reactClass,
     ~props=
       makeProps(
-        ~autoFocus=?Js.Option.map((. b) => from_bool(b), autoFocus),
-        ~checked=?Js.Option.map((. b) => from_bool(b), checked),
-        ~defaultChecked=?
-          Js.Option.map((. b) => from_bool(b), defaultChecked),
-        ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
+        ~autoFocus?,
+        ~checked?,
+        ~defaultChecked?,
+        ~disabled?,
         ~value?,
         ~id?,
         ~className?,
@@ -93,7 +90,7 @@ module Group = {
       ~props=
         makeProps(
           ~defaultValue,
-          ~disabled=?Js.Option.map((. b) => from_bool(b), disabled),
+          ~disabled?,
           ~name?,
           ~options?,
           ~size=?Js.Option.map((. b) => sizeToJs(b), size),
