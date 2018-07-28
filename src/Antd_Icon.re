@@ -8,25 +8,25 @@ let make =
       ~onClick=?,
       ~spin=?,
       ~style=?,
-      _children
+      _children,
     ) => {
   ...component,
-  render: (_) => {
+  render: _ => {
     let spin =
-      switch spin {
+      switch (spin) {
       | Some(spin) => spin
       | None => false
       };
     let classString =
       Cn.make([
         "anticon",
-        className |> Cn.ifOpt,
+        className |> Cn.unwrap,
         "anticon-" ++ Antd_IconName.toString(type_),
         "anticon-spin"
-        |> Cn.ifBool(
-             spin || Antd_IconName.compare(Antd_IconName.loading, type_)
-           )
+        |> Cn.ifTrue(
+             spin || Antd_IconName.compare(Antd_IconName.loading, type_),
+           ),
       ]);
     <i className=classString ?onClick ?style ?title />;
-  }
+  },
 };
