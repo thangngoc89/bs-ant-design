@@ -106,8 +106,7 @@ module Sider = {
             Js.Option.map(
               (. fn) => {
                 /* TODO: Is there any perf cost of defining the function here */
-                let reF = (fn, a, b) =>
-                  fn(Js.to_bool(a), collapseTypeFromJs(b));
+                let reF = (fn, a, b) => fn(a, collapseTypeFromJs(b));
                 reF(fn);
               },
               onCollapse,
