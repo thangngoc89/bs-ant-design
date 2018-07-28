@@ -1,7 +1,7 @@
 {
   "name": "bs-ant-design",
   "reason": { "react-jsx": 2 },
-  "sources": ["src"],
+  "sources": [{ "dir": "src", "subdirs": true }],
   "package-specs": [
     {
       "module": "es6",
