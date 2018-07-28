@@ -8,10 +8,10 @@ external reactClass : ReasonReact.reactClass = "default";
 [@bs.obj]
 external makeProps :
   (
-    ~autoFocus: Js.boolean=?,
-    ~checked: Js.boolean=?,
-    ~defaultChecked: Js.boolean=?,
-    ~disabled: Js.boolean=?,
+    ~autoFocus: bool=?,
+    ~checked: bool=?,
+    ~defaultChecked: bool=?,
+    ~disabled: bool=?,
     ~value: string=?,
     ~id: string=?,
     ~className: string=?,
@@ -60,7 +60,7 @@ module Group = {
   external makeProps :
     (
       ~defaultValue: string,
-      ~disabled: Js.boolean=?,
+      ~disabled: bool=?,
       ~name: string=?,
       /* @todo: type me */
       ~options: 'a=?,

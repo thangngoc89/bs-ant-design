@@ -11,7 +11,7 @@ type dividerType = [ | `horizontal | `vertical];
 external makeProps :
   (
     ~_type: string=?,
-    ~dash: Js.boolean=?,
+    ~dash: bool=?,
     ~id: string=?,
     ~className: string=?,
     ~style: ReactDOMRe.Style.t=?,

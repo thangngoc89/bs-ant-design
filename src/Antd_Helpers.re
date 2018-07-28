@@ -1,4 +1,4 @@
-let from_bool = Js.Boolean.to_js_boolean;
+let from_bool = b => b;
 
 [@bs.deriving jsConverter]
 type breakpoint = [

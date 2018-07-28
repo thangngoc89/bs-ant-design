@@ -21,7 +21,7 @@ module LoadingProps = {
     | Bool(bool)
     | Delay(delay);
   type js;
-  external ofBool : Js.boolean => js = "%identity";
+  external ofBool : bool => js = "%identity";
   external ofDelay : delay => js = "%identity";
   let toJs: t => js =
     fun
@@ -42,8 +42,8 @@ external makeProps :
     ~onMouseDown: ReactEventRe.Mouse.t => unit=?,
     ~tabIndex: int=?,
     ~loading: LoadingProps.js=?,
-    ~disabled: Js.boolean=?,
-    ~ghost: Js.boolean=?,
+    ~disabled: bool=?,
+    ~ghost: bool=?,
     ~target: string=?,
     ~href: string=?,
     ~download: string=?,

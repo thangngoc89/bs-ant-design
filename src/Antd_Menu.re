@@ -29,7 +29,7 @@ external makeProps :
     ~id: string=?,
     ~theme: string=?,
     ~mode: string=?,
-    ~selectable: Js.boolean=?,
+    ~selectable: bool=?,
     ~selectedKeys: array(string)=?,
     ~defaultSelectedKeys: array(string)=?,
     ~openKeys: array(string)=?,
@@ -43,9 +43,9 @@ external makeProps :
     ~openAnimation: string=?,
     ~className: string=?,
     ~prefixCls: string=?,
-    ~multiple: Js.boolean=?,
+    ~multiple: bool=?,
     ~inlineIndent: int=?,
-    ~inlineCollapsed: Js.boolean=?,
+    ~inlineCollapsed: bool=?,
     unit
   ) =>
   _ =
@@ -111,7 +111,7 @@ module Item = {
   external makeProps :
     (
       ~key: string=?,
-      ~disabled: Js.boolean=?,
+      ~disabled: bool=?,
       ~id: string=?,
       ~className: string=?,
       ~style: ReactDOMRe.Style.t=?,
@@ -141,7 +141,7 @@ module SubMenu = {
   [@bs.obj]
   external makeProps :
     (
-      ~disabled: Js.boolean=?,
+      ~disabled: bool=?,
       ~key: string=?,
       ~title: ReasonReact.reactElement=?,
       ~onTitleClick: ReactEventRe.Mouse.t=?,

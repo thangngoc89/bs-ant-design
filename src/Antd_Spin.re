@@ -11,7 +11,7 @@ type size = [ | `default | `small | `large];
 external makeProps :
   (
     ~size: string=?,
-    ~spinning: Js.boolean=?,
+    ~spinning: bool=?,
     ~tip: string=?,
     ~delay: int=?,
     ~wrapperClassName: string=?,
