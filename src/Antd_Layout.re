@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module] external layout : ReasonReact.reactClass = "antd/lib/layout";
 
 [%bs.raw {|require("antd/lib/layout/style")|}];
@@ -114,7 +112,7 @@ module Sider = {
           ~width?,
           ~collapsedWidth?,
           ~breakpoint=?
-            Js.Option.map((. b) => breakpointToJs(b), breakpoint),
+            Js.Option.map((. b) => Antd_Types.breakpointToJs(b), breakpoint),
           (),
         ),
       children,
