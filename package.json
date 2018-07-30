@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "antd": "^3.7.2",
-    "re-classnames": "^2.1.0"
+    "re-classnames": "github:andresrgz/re-classnames"
   }
 }
