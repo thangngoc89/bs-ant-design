@@ -6,6 +6,8 @@ module Button = Antd_Button;
 
 module Divider = Antd_Divider;
 
+module Form = Antd_Form;
+
 module Grid = Antd_Grid;
 
 module Icon = Antd_Icon;
