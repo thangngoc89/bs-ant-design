@@ -16,7 +16,6 @@ module Item = {
   [@bs.deriving jsConverter]
   type validateStatus = [ | `success | `warning | `error | `validating];
 
-  /* TODO: Add labelCol and wrapperCol props */
   [@bs.obj]
   external makeProps :
     (
@@ -24,6 +23,8 @@ module Item = {
       ~className: string=?,
       ~id: string=?,
       ~label: ReasonReact.reactElement=?,
+      ~labelCol: Antd_Grid.Col.props=?,
+      ~wrapperCol: Antd_Grid.Col.props=?,
       ~help: ReasonReact.reactElement=?,
       ~extra: ReasonReact.reactElement=?,
       ~validateStatus: string=?,
@@ -42,6 +43,8 @@ module Item = {
         ~className=?,
         ~id=?,
         ~label=?,
+        ~labelCol=?,
+        ~wrapperCol=?,
         ~help=?,
         ~extra=?,
         ~validateStatus=?,
@@ -59,6 +62,8 @@ module Item = {
           ~className?,
           ~id?,
           ~label?,
+          ~labelCol?,
+          ~wrapperCol?,
           ~help?,
           ~extra?,
           ~validateStatus=?

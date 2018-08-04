@@ -115,6 +115,7 @@ module Col = {
     | FullColSize(fullColSize) => fullColSize
     };
 
+  type props;
   [@bs.obj]
   external makeProps :
     (
@@ -134,7 +135,7 @@ module Col = {
       ~style: ReactDOMRe.Style.t=?,
       unit
     ) =>
-    _ =
+    props =
     "";
   let make =
       (
