@@ -112,7 +112,10 @@ module Sider = {
           ~width?,
           ~collapsedWidth?,
           ~breakpoint=?
-            Js.Option.map((. b) => breakpointToJs(b), breakpoint),
+            Js.Option.map(
+              (. b) => Antd_Types.breakpointToJs(b),
+              breakpoint,
+            ),
           (),
         ),
       children,

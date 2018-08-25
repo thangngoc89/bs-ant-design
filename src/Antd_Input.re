@@ -10,7 +10,7 @@ external makeProps:
   (
     ~prefixCls: string=?,
     ~size: string=?,
-    ~onPressEnter: ReactEventRe.Keyboard.t=?,
+    ~onPressEnter: ReactEvent.Keyboard.t=?,
     ~addonBefore: ReasonReact.reactElement=?,
     ~addonAfter: ReasonReact.reactElement=?,
     ~prefix: ReasonReact.reactElement=?,
@@ -20,7 +20,8 @@ external makeProps:
     ~onChange: ReactEvent.Form.t => unit=?,
     ~onBlur: ReactEvent.Focus.t => unit=?,
     ~className: string=?,
-    ~style: ReactDOMRe.Style.t=?
+    ~style: ReactDOMRe.Style.t=?,
+    unit
   ) =>
   _ =
   "";

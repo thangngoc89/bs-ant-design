@@ -28,8 +28,6 @@ module Spin = Antd_Spin;
 
 module Steps = Antd_Steps;
 
-module Input = Antd_Input;
-
 module Select = Antd_Select;
 
 module AutoComplete = Antd_AutoComplete;

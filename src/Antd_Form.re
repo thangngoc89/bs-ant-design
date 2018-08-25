@@ -1,4 +1,4 @@
-[@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/form";
+[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/form";
 
 [%bs.raw {|require("antd/lib/form/style")|}];
 
@@ -11,13 +11,13 @@ type formLayout = [
 
 module Item = {
   [@bs.module]
-  external reactClass : ReasonReact.reactClass = "antd/lib/form/FormItem";
+  external reactClass: ReasonReact.reactClass = "antd/lib/form/FormItem";
 
   [@bs.deriving jsConverter]
   type validateStatus = [ | `success | `warning | `error | `validating];
 
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~prefixCls: string=?,
       ~className: string=?,
@@ -79,10 +79,10 @@ module Item = {
 };
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~layout: string=?,
-    ~onSubmit: ReactEventRe.Form.t => unit=?,
+    ~onSubmit: ReactEvent.Form.t => unit=?,
     ~style: ReactDOMRe.Style.t=?,
     ~className: string=?,
     ~prefixCls: string=?,
