@@ -1,10 +1,10 @@
 [@bs.module "antd/lib/radio"]
-external reactClass : ReasonReact.reactClass = "default";
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/radio/style")|}];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~autoFocus: bool=?,
     ~checked: bool=?,
@@ -50,11 +50,11 @@ let make =
 
 module Group = {
   [@bs.module "antd/lib/radio"]
-  external reactClass : ReasonReact.reactClass = "Group";
+  external reactClass: ReasonReact.reactClass = "Group";
   [@bs.deriving jsConverter]
   type size = [ | `default | `small | `large];
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~defaultValue: string,
       ~disabled: bool=?,

@@ -1,9 +1,9 @@
-[@bs.module] external input : ReasonReact.reactClass = "antd/lib/input";
+[@bs.module] external input: ReasonReact.reactClass = "antd/lib/input";
 
 [%bs.raw {|require("antd/lib/input/style")|}];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~value: string=?,
     ~defaultValue: string=?,
@@ -44,7 +44,7 @@ let make =
 
 module TextArea = {
   [@bs.module "antd/lib/input"]
-  external reactClass : ReasonReact.reactClass = "TextArea";
+  external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
         ~value=?,

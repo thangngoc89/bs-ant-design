@@ -1,6 +1,6 @@
 module IconName = Antd_IconName;
 
-[@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/button";
+[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/button";
 
 [%bs.raw {|require("antd/lib/button/style")|}];
 
@@ -19,8 +19,8 @@ module LoadingProps = {
     | Bool(bool)
     | Delay(delay);
   type js;
-  external ofBool : bool => js = "%identity";
-  external ofDelay : delay => js = "%identity";
+  external ofBool: bool => js = "%identity";
+  external ofDelay: delay => js = "%identity";
   let toJs: t => js =
     fun
     | Bool(a) => a |> ofBool
@@ -28,7 +28,7 @@ module LoadingProps = {
 };
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~_type: string=?,
     ~htmlType: string=?,

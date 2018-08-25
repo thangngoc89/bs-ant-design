@@ -1,11 +1,11 @@
 open Antd_Helpers;
 
-[@bs.module] external layout : ReasonReact.reactClass = "antd/lib/layout";
+[@bs.module] external layout: ReasonReact.reactClass = "antd/lib/layout";
 
 [%bs.raw {|require("antd/lib/layout/style")|}];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (~id: string=?, ~className: string=?, ~style: ReactDOMRe.Style.t=?, unit) =>
   _ =
   "";
@@ -19,7 +19,7 @@ let make = (~id=?, ~className=?, ~style=?, children) =>
 
 module Header = {
   [@bs.module "antd/lib/layout"]
-  external header : ReasonReact.reactClass = "Header";
+  external header: ReasonReact.reactClass = "Header";
   let make = (~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=header,
@@ -30,7 +30,7 @@ module Header = {
 
 module Footer = {
   [@bs.module "antd/lib/layout"]
-  external footer : ReasonReact.reactClass = "Footer";
+  external footer: ReasonReact.reactClass = "Footer";
   let make = (~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=footer,
@@ -41,7 +41,7 @@ module Footer = {
 
 module Content = {
   [@bs.module "antd/lib/layout"]
-  external content : ReasonReact.reactClass = "Content";
+  external content: ReasonReact.reactClass = "Content";
   let make = (~id=?, ~className=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=content,
@@ -52,11 +52,11 @@ module Content = {
 
 module Sider = {
   [@bs.module "antd/lib/layout"]
-  external sider : ReasonReact.reactClass = "Sider";
+  external sider: ReasonReact.reactClass = "Sider";
   [@bs.deriving {jsConverter: newType}]
   type collapseType = [ | `clickTrigger | `responsive];
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~style: ReactDOMRe.Style.t=?,
       ~prefixCls: string=?,

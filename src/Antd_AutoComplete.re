@@ -1,10 +1,10 @@
 [@bs.module]
-external autoComplete : ReasonReact.reactClass = "antd/lib/auto-complete";
+external autoComplete: ReasonReact.reactClass = "antd/lib/auto-complete";
 
 [%bs.raw {|require("antd/lib/auto-complete/style")|}];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~dataSource: array(string)=?,
     ~value: string=?,
@@ -48,7 +48,7 @@ let make =
 
 module TextArea = {
   [@bs.module "antd/lib/input"]
-  external reactClass : ReasonReact.reactClass = "TextArea";
+  external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
         ~value=?,

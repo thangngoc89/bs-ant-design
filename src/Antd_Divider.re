@@ -1,4 +1,4 @@
-[@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/divider";
+[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/divider";
 
 [%bs.raw {|require("antd/lib/divider/style")|}];
 
@@ -6,7 +6,7 @@
 type dividerType = [ | `horizontal | `vertical];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~_type: string=?,
     ~dash: bool=?,
