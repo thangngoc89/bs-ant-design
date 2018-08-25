@@ -1,4 +1,4 @@
-[@bs.module] external spin : ReasonReact.reactClass = "antd/lib/spin";
+[@bs.module] external spin: ReasonReact.reactClass = "antd/lib/spin";
 
 [%bs.raw {|require("antd/lib/spin/style")|}];
 
@@ -6,7 +6,7 @@
 type size = [ | `default | `small | `large];
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~size: string=?,
     ~spinning: bool=?,

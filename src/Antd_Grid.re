@@ -2,7 +2,7 @@
 
 module Row = {
   [@bs.module]
-  external reactClass : ReasonReact.reactClass = "antd/lib/grid/row";
+  external reactClass: ReasonReact.reactClass = "antd/lib/grid/row";
   [@bs.deriving jsConverter]
   type rowType = [ | `flex];
   [@bs.deriving jsConverter]
@@ -17,7 +17,7 @@ module Row = {
   ];
   type gutterBreakpoints;
   [@bs.obj]
-  external makeStringGutterConfig :
+  external makeStringGutterConfig:
     (
       ~xs: string=?,
       ~sm: string=?,
@@ -43,13 +43,13 @@ module Row = {
   type gutter(_) =
     | SingleGutterInPx(int): gutter(int)
     | ResponsiveBreakpoints(gutterBreakpoints): gutter(gutterBreakpoints);
-  let gutterToProp = (type a, gutter: gutter(a)) : a =>
+  let gutterToProp = (type a, gutter: gutter(a)): a =>
     switch (gutter) {
     | SingleGutterInPx(int) => int
     | ResponsiveBreakpoints(complexGutter) => complexGutter
     };
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~className: string=?,
       ~_type: string=?,
@@ -92,10 +92,10 @@ module Row = {
 
 module Col = {
   [@bs.module]
-  external reactClass : ReasonReact.reactClass = "antd/lib/grid/col";
+  external reactClass: ReasonReact.reactClass = "antd/lib/grid/col";
   type fullColSize;
   [@bs.obj]
-  external makeColSize :
+  external makeColSize:
     (
       ~span: int=?,
       ~order: int=?,
@@ -109,7 +109,7 @@ module Col = {
   type colSize(_) =
     | SingleColSize(int): colSize(int)
     | FullColSize(fullColSize): colSize(fullColSize);
-  let colSizeToProp = (type a, colSize: colSize(a)) : a =>
+  let colSizeToProp = (type a, colSize: colSize(a)): a =>
     switch (colSize) {
     | SingleColSize(int) => int
     | FullColSize(fullColSize) => fullColSize
@@ -117,7 +117,7 @@ module Col = {
 
   type props;
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~className: string=?,
       ~span: int=?,

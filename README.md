@@ -69,6 +69,8 @@ Some common patterns I used:
 
 ### Implemented components
 
+#### 🔗 AutoComplete
+
 #### 🔗 Avatar
 
 #### 🔗 Breadcrumb
@@ -78,6 +80,12 @@ Some common patterns I used:
 #### 🔗 Divider
 
 #### 🔗 Grid
+
+#### 🔗 Input
+
+#### 🔗 Select
+
+#### 🔗 Steps
 
 Usage:
 

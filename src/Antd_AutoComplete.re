@@ -1,60 +1,44 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/input";
+[@bs.module]
+external autoComplete: ReasonReact.reactClass = "antd/lib/auto-complete";
 
-[%bs.raw {|require("antd/lib/input/style")|}];
-
-[@bs.deriving jsConverter]
-type size = [ | `large | `default | `small];
+[%bs.raw {|require("antd/lib/auto-complete/style")|}];
 
 [@bs.obj]
 external makeProps:
   (
-    ~prefixCls: string=?,
-    ~size: string=?,
-    ~onPressEnter: ReactEventRe.Keyboard.t=?,
-    ~addonBefore: ReasonReact.reactElement=?,
-    ~addonAfter: ReasonReact.reactElement=?,
-    ~prefix: ReasonReact.reactElement=?,
-    ~suffix: ReasonReact.reactElement=?,
+    ~dataSource: array(string)=?,
     ~value: string=?,
     ~defaultValue: string=?,
     ~onChange: ReactEvent.Form.t => unit=?,
+    ~onPressEnter: ReactEvent.Keyboard.t => unit=?,
     ~onBlur: ReactEvent.Focus.t => unit=?,
     ~className: string=?,
-    ~style: ReactDOMRe.Style.t=?
+    ~style: ReactDOMRe.Style.t=?,
+    unit
   ) =>
   _ =
   "";
 
 let make =
     (
-      ~prefixCls=?,
-      ~size=?,
-      ~onPressEnter=?,
-      ~addonBefore=?,
-      ~addonAfter=?,
-      ~prefix=?,
-      ~suffix=?,
+      ~dataSource=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
+      ~onPressEnter=?,
       ~className=?,
       ~style=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass,
+    ~reactClass=autoComplete,
     ~props=
       makeProps(
-        ~prefixCls?,
-        ~size=?Js.Option.map((. b) => sizeToJs(b), size),
-        ~onPressEnter?,
-        ~addonBefore?,
-        ~addonAfter?,
-        ~prefix?,
-        ~suffix?,
+        ~dataSource?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
+        ~onPressEnter?,
         ~className?,
         ~style?,
         (),

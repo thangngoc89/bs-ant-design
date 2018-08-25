@@ -1,4 +1,4 @@
-[@bs.module] external menu : ReasonReact.reactClass = "antd/lib/menu";
+[@bs.module] external menu: ReasonReact.reactClass = "antd/lib/menu";
 
 [%bs.raw {|require("antd/lib/menu/style")|}];
 
@@ -18,11 +18,11 @@ type clickParams = {
   .
   "key": string,
   "path": array(string),
-  "domEvent": ReactEventRe.Mouse.t,
+  "domEvent": ReactEvent.Mouse.t,
 };
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~id: string=?,
     ~theme: string=?,
@@ -103,9 +103,9 @@ let make =
   );
 
 module Item = {
-  [@bs.module "antd/lib/menu"] external item : ReasonReact.reactClass = "Item";
+  [@bs.module "antd/lib/menu"] external item: ReasonReact.reactClass = "Item";
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~key: string=?,
       ~disabled: bool=?,
@@ -127,14 +127,14 @@ module Item = {
 
 module SubMenu = {
   [@bs.module "antd/lib/menu"]
-  external subMenu : ReasonReact.reactClass = "SubMenu";
+  external subMenu: ReasonReact.reactClass = "SubMenu";
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~disabled: bool=?,
       ~key: string=?,
       ~title: ReasonReact.reactElement=?,
-      ~onTitleClick: ReactEventRe.Mouse.t=?,
+      ~onTitleClick: ReactEvent.Mouse.t=?,
       ~id: string=?,
       ~className: string=?,
       ~style: ReactDOMRe.Style.t=?,
@@ -172,9 +172,9 @@ module SubMenu = {
 
 module ItemGroup = {
   [@bs.module "antd/lib/menu"]
-  external itemGroup : ReasonReact.reactClass = "ItemGroup";
+  external itemGroup: ReasonReact.reactClass = "ItemGroup";
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~title: ReasonReact.reactElement=?,
       ~id: string=?,
@@ -194,9 +194,9 @@ module ItemGroup = {
 
 module Divider = {
   [@bs.module "antd/lib/menu"]
-  external divider : ReasonReact.reactClass = "Divider";
+  external divider: ReasonReact.reactClass = "Divider";
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~id: string=?,
       ~className: string=?,
