@@ -1,5 +1,3 @@
-open Antd_Helpers;
-
 [@bs.module "antd/lib/radio"]
 external reactClass : ReasonReact.reactClass = "default";
 
@@ -8,10 +6,10 @@ external reactClass : ReasonReact.reactClass = "default";
 [@bs.obj]
 external makeProps :
   (
-    ~autoFocus: Js.boolean=?,
-    ~checked: Js.boolean=?,
-    ~defaultChecked: Js.boolean=?,
-    ~disabled: Js.boolean=?,
+    ~autoFocus: bool=?,
+    ~checked: bool=?,
+    ~defaultChecked: bool=?,
+    ~disabled: bool=?,
     ~value: string=?,
     ~id: string=?,
     ~className: string=?,
@@ -31,24 +29,23 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
       makeProps(
-        ~autoFocus=?Js.Option.map([@bs] (b => from_bool(b)), autoFocus),
-        ~checked=?Js.Option.map([@bs] (b => from_bool(b)), checked),
-        ~defaultChecked=?
-          Js.Option.map([@bs] (b => from_bool(b)), defaultChecked),
-        ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
+        ~autoFocus?,
+        ~checked?,
+        ~defaultChecked?,
+        ~disabled?,
         ~value?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );
 
 module Group = {
@@ -60,13 +57,13 @@ module Group = {
   external makeProps :
     (
       ~defaultValue: string,
-      ~disabled: Js.boolean=?,
+      ~disabled: bool=?,
       ~name: string=?,
       /* @todo: type me */
       ~options: 'a=?,
       ~size: string=?,
       ~value: string,
-      ~onChange: ReactEventRe.Form.t => unit,
+      ~onChange: ReactEvent.Form.t => unit,
       ~id: string=?,
       ~className: string=?,
       ~style: ReactDOMRe.Style.t=?,
@@ -86,24 +83,24 @@ module Group = {
         ~id=?,
         ~className=?,
         ~style=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
         makeProps(
           ~defaultValue,
-          ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
+          ~disabled?,
           ~name?,
           ~options?,
-          ~size=?Js.Option.map([@bs] (b => sizeToJs(b)), size),
+          ~size=?Js.Option.map((. b) => sizeToJs(b), size),
           ~value,
           ~onChange,
           ~id?,
           ~className?,
           ~style?,
-          ()
+          (),
         ),
-      children
+      children,
     );
 };

@@ -14,7 +14,7 @@ let make = (~id=?, ~className=?, ~style=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=layout,
     ~props=makeProps(~id?, ~className?, ~style?, ()),
-    children
+    children,
   );
 
 module Header = {
@@ -24,7 +24,7 @@ module Header = {
     ReasonReact.wrapJsForReason(
       ~reactClass=header,
       ~props=makeProps(~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };
 
@@ -35,7 +35,7 @@ module Footer = {
     ReasonReact.wrapJsForReason(
       ~reactClass=footer,
       ~props=makeProps(~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };
 
@@ -46,7 +46,7 @@ module Content = {
     ReasonReact.wrapJsForReason(
       ~reactClass=content,
       ~props=makeProps(~id?, ~className?, ~style?, ()),
-      children
+      children,
     );
 };
 
@@ -61,11 +61,11 @@ module Sider = {
       ~style: ReactDOMRe.Style.t=?,
       ~prefixCls: string=?,
       ~className: string=?,
-      ~collapsible: Js.boolean=?,
-      ~collapsed: Js.boolean=?,
-      ~defaultCollapsed: Js.boolean=?,
-      ~reverseArrow: Js.boolean=?,
-      ~onCollapse: (Js.boolean, abs_collapseType) => unit=?,
+      ~collapsible: bool=?,
+      ~collapsed: bool=?,
+      ~defaultCollapsed: bool=?,
+      ~reverseArrow: bool=?,
+      ~onCollapse: (bool, abs_collapseType) => unit=?,
       ~trigger: ReasonReact.reactElement=?,
       ~width: int=?,
       ~collapsedWidth: int=?,
@@ -88,7 +88,7 @@ module Sider = {
         ~width=?,
         ~collapsedWidth=?,
         ~breakpoint=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=sider,
@@ -97,32 +97,26 @@ module Sider = {
           ~style?,
           ~prefixCls?,
           ~className?,
-          ~collapsible=?Js.Option.map([@bs] (b => from_bool(b)), collapsible),
-          ~collapsed=?Js.Option.map([@bs] (b => from_bool(b)), collapsed),
-          ~defaultCollapsed=?
-            Js.Option.map([@bs] (b => from_bool(b)), defaultCollapsed),
-          ~reverseArrow=?
-            Js.Option.map([@bs] (b => from_bool(b)), reverseArrow),
+          ~collapsible?,
+          ~collapsed?,
+          ~defaultCollapsed?,
+          ~reverseArrow?,
           ~onCollapse=?
             Js.Option.map(
-              [@bs]
-              (
-                fn => {
-                  /* TODO: Is there any perf cost of defining the function here */
-                  let reF = (fn, a, b) =>
-                    fn(Js.to_bool(a), collapseTypeFromJs(b));
-                  reF(fn);
-                }
-              ),
-              onCollapse
+              (. fn) => {
+                /* TODO: Is there any perf cost of defining the function here */
+                let reF = (fn, a, b) => fn(a, collapseTypeFromJs(b));
+                reF(fn);
+              },
+              onCollapse,
             ),
           ~trigger?,
           ~width?,
           ~collapsedWidth?,
           ~breakpoint=?
-            Js.Option.map([@bs] (b => breakpointToJs(b)), breakpoint),
-          ()
+            Js.Option.map((. b) => breakpointToJs(b), breakpoint),
+          (),
         ),
-      children
+      children,
     );
 };
