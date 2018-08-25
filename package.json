@@ -12,17 +12,17 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^2.2.2",
+    "bs-platform": "^4.0.5",
     "cheerio": "^1.0.0-rc.2",
     "got": "^8.0.1",
     "lodash": "^4.17.4",
-    "reason-react": ">=0.3.4"
+    "reason-react": ">=0.5.3"
   },
   "peerDependencies": {
-    "reason-react": ">=0.3.4"
+    "reason-react": ">=0.5.3"
   },
   "dependencies": {
-    "antd": "^3.1.0",
-    "re-classnames": "^0.0.3"
+    "antd": "^3.8.2",
+    "re-classnames": "^2.1.0"
   }
 }

@@ -1,0 +1,1 @@
+module Locale = Antd_DatePicker.Locale;
