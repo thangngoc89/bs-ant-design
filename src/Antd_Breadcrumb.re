@@ -1,5 +1,5 @@
 [@bs.module]
-external breadcrumb : ReasonReact.reactClass = "antd/lib/breadcrumb";
+external breadcrumb: ReasonReact.reactClass = "antd/lib/breadcrumb";
 
 [%bs.raw {|require("antd/lib/breadcrumb/style")|}];
 
@@ -16,24 +16,22 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=breadcrumb,
     ~props=
-      Js.Nullable.(
-        {
-          "routes": fromOption(routes),
-          "params": fromOption(params),
-          "separator": fromOption(separator),
-          "itemRender": fromOption(itemRender),
-          "id": fromOption(id),
-          "className": fromOption(className),
-          "style": fromOption(style),
-        }
-      ),
+      Js.Nullable.{
+        "routes": fromOption(routes),
+        "params": fromOption(params),
+        "separator": fromOption(separator),
+        "itemRender": fromOption(itemRender),
+        "id": fromOption(id),
+        "className": fromOption(className),
+        "style": fromOption(style),
+      },
   );
 
 module Item = {
   [@bs.module "antd/lib/breadcrumb"]
-  external item : ReasonReact.reactClass = "Item";
+  external item: ReasonReact.reactClass = "Item";
   [@bs.obj]
-  external makeProps :
+  external makeProps:
     (
       ~separator: string=?,
       ~href: string=?,

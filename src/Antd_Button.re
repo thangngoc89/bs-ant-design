@@ -1,8 +1,6 @@
-open Antd_Helpers;
-
 module IconName = Antd_IconName;
 
-[@bs.module] external reactClass : ReasonReact.reactClass = "antd/lib/button";
+[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/button";
 
 [%bs.raw {|require("antd/lib/button/style")|}];
 
@@ -21,29 +19,29 @@ module LoadingProps = {
     | Bool(bool)
     | Delay(delay);
   type js;
-  external ofBool : Js.boolean => js = "%identity";
-  external ofDelay : delay => js = "%identity";
+  external ofBool: bool => js = "%identity";
+  external ofDelay: delay => js = "%identity";
   let toJs: t => js =
     fun
-    | Bool(a) => a |> from_bool |> ofBool
+    | Bool(a) => a |> ofBool
     | Delay(a) => a |> ofDelay;
 };
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~_type: string=?,
     ~htmlType: string=?,
     ~icon: IconName.t=?,
     ~shape: string=?,
     ~size: string=?,
-    ~onClick: ReactEventRe.Mouse.t => unit=?,
-    ~onMouseUp: ReactEventRe.Mouse.t => unit=?,
-    ~onMouseDown: ReactEventRe.Mouse.t => unit=?,
+    ~onClick: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?,
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
     ~tabIndex: int=?,
     ~loading: LoadingProps.js=?,
-    ~disabled: Js.boolean=?,
-    ~ghost: Js.boolean=?,
+    ~disabled: bool=?,
+    ~ghost: bool=?,
     ~target: string=?,
     ~href: string=?,
     ~download: string=?,
@@ -75,31 +73,31 @@ let make =
       ~id=?,
       ~className=?,
       ~style=?,
-      children
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,
     ~props=
       makeProps(
-        ~_type=?Js.Option.map([@bs] (b => buttonTypeToJs(b)), _type),
+        ~_type=?Js.Option.map((. b) => buttonTypeToJs(b), _type),
         ~htmlType?,
         ~icon?,
-        ~shape=?Js.Option.map([@bs] (b => buttonShapeToJs(b)), shape),
-        ~size=?Js.Option.map([@bs] (b => buttonSizeToJs(b)), size),
+        ~shape=?Js.Option.map((. b) => buttonShapeToJs(b), shape),
+        ~size=?Js.Option.map((. b) => buttonSizeToJs(b), size),
         ~onClick?,
         ~onMouseUp?,
         ~onMouseDown?,
         ~tabIndex?,
-        ~loading=?Js.Option.map([@bs] (b => LoadingProps.toJs(b)), loading),
-        ~disabled=?Js.Option.map([@bs] (b => from_bool(b)), disabled),
-        ~ghost=?Js.Option.map([@bs] (b => from_bool(b)), ghost),
+        ~loading=?Js.Option.map((. b) => LoadingProps.toJs(b), loading),
+        ~disabled?,
+        ~ghost?,
         ~target?,
         ~href?,
         ~download?,
         ~id?,
         ~className?,
         ~style?,
-        ()
+        (),
       ),
-    children
+    children,
   );
