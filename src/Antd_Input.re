@@ -12,6 +12,7 @@ external makeProps:
     ~onBlur: ReactEvent.Focus.t => unit=?,
     ~className: string=?,
     ~style: ReactDOMRe.Style.t=?,
+    ~placeholder: string=?,
     unit
   ) =>
   _ =
@@ -25,6 +26,7 @@ let make =
       ~onPressEnter=?,
       ~className=?,
       ~style=?,
+      ~placeholder=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -37,6 +39,7 @@ let make =
         ~onPressEnter?,
         ~className?,
         ~style?,
+        ~placeholder?,
         (),
       ),
     children,
@@ -54,6 +57,7 @@ module TextArea = {
         ~onBlur=?,
         ~className=?,
         ~style=?,
+        ~placeholder=?,
         children,
       ) =>
     ReasonReact.wrapJsForReason(
@@ -67,6 +71,7 @@ module TextArea = {
           ~onBlur?,
           ~className?,
           ~style?,
+          ~placeholder?,
           (),
         ),
       children,
