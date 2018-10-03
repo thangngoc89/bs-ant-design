@@ -5,6 +5,7 @@
 [@bs.obj]
 external makeProps:
   (
+    ~_type: string=?,
     ~value: string=?,
     ~defaultValue: string=?,
     ~onChange: ReactEvent.Form.t => unit=?,
@@ -20,6 +21,7 @@ external makeProps:
 
 let make =
     (
+      ~_type=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
@@ -33,6 +35,7 @@ let make =
     ~reactClass=input,
     ~props=
       makeProps(
+        ~_type?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
