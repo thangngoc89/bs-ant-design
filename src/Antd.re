@@ -27,3 +27,5 @@ module Input = Antd_Input;
 module Select = Antd_Select;
 
 module AutoComplete = Antd_AutoComplete;
+
+module Form = Antd_Form;
