@@ -44,14 +44,7 @@ ReasonReact.wrapJsForReason(
     ),
   children,
 );
-type wrapper = [@bs] (ReasonReact.reactClass => ReasonReact.reactClass);
-[@bs.module "antd/lib/form"] external create : unit => wrapper = "create";
-let wrapper = (~component, ~make', ~props, ~children) => {
-  let wrapper = create();
-  let reactClass' = ReasonReact.wrapReasonForJs(~component=component, (_) => make'([||]));
-  let reactClass = [@bs] wrapper(reactClass');
-  ReasonReact.wrapJsForReason(~reactClass=reactClass, ~props=props, children);
-};
+
 module Item = {
   [@bs.module "antd/lib/form"]
   external item : ReasonReact.reactClass = "Item";
