@@ -2,24 +2,23 @@
 
 [%bs.raw {|require("antd/lib/input/style")|}];
 
-[@bs.obj]
-external makeProps:
-  (
-    ~value: string=?,
-    ~defaultValue: string=?,
-    ~onChange: ReactEvent.Form.t => unit=?,
-    ~onPressEnter: ReactEvent.Keyboard.t => unit=?,
-    ~onBlur: ReactEvent.Focus.t => unit=?,
-    ~className: string=?,
-    ~style: ReactDOMRe.Style.t=?,
-    ~placeholder: string=?,
-    unit
-  ) =>
-  _ =
-  "";
+[@bs.deriving abstract]
+type jsProps = {
+  [@bs.optional] [@bs.as "type"] type_: string,
+  [@bs.optional] value: string,
+  [@bs.optional] defaultValue: string,
+  [@bs.optional] onChange: ReactEvent.Form.t => unit,
+  [@bs.optional] onPressEnter: ReactEvent.Keyboard.t => unit,
+  [@bs.optional] onBlur: ReactEvent.Focus.t => unit,
+  [@bs.optional] className: string,
+  [@bs.optional] style: ReactDOMRe.Style.t,
+  [@bs.optional] placeholder: string,
+  unit
+};
 
 let make =
     (
+      ~type_=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
@@ -32,7 +31,8 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=input,
     ~props=
-      makeProps(
+      jsProps(
+        ~type_?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
@@ -50,6 +50,7 @@ module TextArea = {
   external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
+        ~type_=?,
         ~value=?,
         ~defaultValue=?,
         ~onChange=?,
@@ -63,7 +64,8 @@ module TextArea = {
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
-        makeProps(
+        jsProps(
+          ~type_?,
           ~value?,
           ~defaultValue?,
           ~onChange?,
