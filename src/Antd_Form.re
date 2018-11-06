@@ -5,7 +5,7 @@
 [@bs.obj]
 external makeProps:
   (
-    ~onSubmit: string=?,
+    ~onSubmit: ReactEvent.Form.t => unit=?,
     ~hideRequiredMark: bool=?,
     ~id: string=?,
     ~className: string=?,
