@@ -5,7 +5,7 @@
   "package-specs": [
     {
       "module": "es6",
-      "in-source": false
+      "in-source": true
     }
   ],
   "suffix": ".js",

@@ -2,28 +2,29 @@
 
 [%bs.raw {|require("antd/lib/input/style")|}];
 
-[@bs.obj]
-external makeProps:
-  (
-    ~value: string=?,
-    ~defaultValue: string=?,
-    ~onChange: ReactEvent.Form.t => unit=?,
-    ~onPressEnter: ReactEvent.Keyboard.t => unit=?,
-    ~onBlur: ReactEvent.Focus.t => unit=?,
-    ~className: string=?,
-    ~style: ReactDOMRe.Style.t=?,
-    ~placeholder: string=?,
-    unit
-  ) =>
-  _ =
-  "";
+[@bs.deriving abstract]
+type jsProps = {
+  [@bs.optional] [@bs.as "type"] htmlType: string,
+  [@bs.optional] name: string,
+  [@bs.optional] value: string,
+  [@bs.optional] defaultValue: string,
+  [@bs.optional] onChange: ReactEvent.Form.t => unit,
+  [@bs.optional] onPressEnter: ReactEvent.Keyboard.t => unit,
+  [@bs.optional] onBlur: ReactEvent.Focus.t => unit,
+  [@bs.optional] className: string,
+  [@bs.optional] style: ReactDOMRe.Style.t,
+  [@bs.optional] placeholder: string,
+};
 
 let make =
     (
+      ~htmlType=?,
+      ~name=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
       ~onPressEnter=?,
+      ~onBlur=?,
       ~className=?,
       ~style=?,
       ~placeholder=?,
@@ -32,11 +33,14 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=input,
     ~props=
-      makeProps(
+      jsProps(
+        ~htmlType?,
+        ~name?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
         ~onPressEnter?,
+        ~onBlur?,
         ~className?,
         ~style?,
         ~placeholder?,
@@ -50,6 +54,8 @@ module TextArea = {
   external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
+        ~htmlType=?,
+        ~name=?,
         ~value=?,
         ~defaultValue=?,
         ~onChange=?,
@@ -63,7 +69,9 @@ module TextArea = {
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
-        makeProps(
+        jsProps(
+          ~htmlType?,
+          ~name?,
           ~value?,
           ~defaultValue?,
           ~onChange?,
