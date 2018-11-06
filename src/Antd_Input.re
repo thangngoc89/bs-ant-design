@@ -4,7 +4,8 @@
 
 [@bs.deriving abstract]
 type jsProps = {
-  [@bs.optional] [@bs.as "type"] type_: string,
+  [@bs.optional] [@bs.as "type"] htmlType: string,
+  [@bs.optional] [@bs.as "name"] htmlName: string,
   [@bs.optional] value: string,
   [@bs.optional] defaultValue: string,
   [@bs.optional] onChange: ReactEvent.Form.t => unit,
@@ -13,16 +14,17 @@ type jsProps = {
   [@bs.optional] className: string,
   [@bs.optional] style: ReactDOMRe.Style.t,
   [@bs.optional] placeholder: string,
-  unit
 };
 
 let make =
     (
-      ~type_=?,
+      ~htmlType=?,
+      ~htmlName=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
       ~onPressEnter=?,
+      ~onBlur=?,
       ~className=?,
       ~style=?,
       ~placeholder=?,
@@ -32,11 +34,13 @@ let make =
     ~reactClass=input,
     ~props=
       jsProps(
-        ~type_?,
+        ~htmlType?,
+        ~htmlName?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
         ~onPressEnter?,
+        ~onBlur?,
         ~className?,
         ~style?,
         ~placeholder?,
@@ -50,7 +54,8 @@ module TextArea = {
   external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
-        ~type_=?,
+        ~htmlType=?,
+        ~htmlName=?,
         ~value=?,
         ~defaultValue=?,
         ~onChange=?,
@@ -65,7 +70,8 @@ module TextArea = {
       ~reactClass,
       ~props=
         jsProps(
-          ~type_?,
+          ~htmlType?,
+          ~htmlName?,
           ~value?,
           ~defaultValue?,
           ~onChange?,
