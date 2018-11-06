@@ -5,7 +5,7 @@
 [@bs.deriving abstract]
 type jsProps = {
   [@bs.optional] [@bs.as "type"] htmlType: string,
-  [@bs.optional] [@bs.as "name"] htmlName: string,
+  [@bs.optional] [@bs.as "name"] name: string,
   [@bs.optional] value: string,
   [@bs.optional] defaultValue: string,
   [@bs.optional] onChange: ReactEvent.Form.t => unit,
@@ -19,7 +19,7 @@ type jsProps = {
 let make =
     (
       ~htmlType=?,
-      ~htmlName=?,
+      ~name=?,
       ~value=?,
       ~defaultValue=?,
       ~onChange=?,
@@ -35,7 +35,7 @@ let make =
     ~props=
       jsProps(
         ~htmlType?,
-        ~htmlName?,
+        ~name?,
         ~value?,
         ~defaultValue?,
         ~onChange?,
@@ -55,7 +55,7 @@ module TextArea = {
   let make =
       (
         ~htmlType=?,
-        ~htmlName=?,
+        ~name=?,
         ~value=?,
         ~defaultValue=?,
         ~onChange=?,
@@ -71,7 +71,7 @@ module TextArea = {
       ~props=
         jsProps(
           ~htmlType?,
-          ~htmlName?,
+          ~name?,
           ~value?,
           ~defaultValue?,
           ~onChange?,
