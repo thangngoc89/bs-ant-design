@@ -5,7 +5,7 @@
 [@bs.deriving abstract]
 type jsProps = {
   [@bs.optional] [@bs.as "type"] htmlType: string,
-  [@bs.optional] [@bs.as "name"] name: string,
+  [@bs.optional] name: string,
   [@bs.optional] value: string,
   [@bs.optional] defaultValue: string,
   [@bs.optional] onChange: ReactEvent.Form.t => unit,
