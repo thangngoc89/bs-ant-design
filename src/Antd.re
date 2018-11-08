@@ -1,5 +1,7 @@
 module Avatar = Antd_Avatar;
 
+module Badge = Antd_Badge;
+
 module Breadcrumb = Antd_Breadcrumb;
 
 module Button = Antd_Button;
