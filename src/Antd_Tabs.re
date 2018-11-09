@@ -14,17 +14,17 @@ type jsProps = {
   [@bs.optional] activeKey: string,
   [@bs.optional] defaultActiveKey: string,
   [@bs.optional] hideAdd: bool,
-  [@bs.optional] onChange: (~activeKey: string) => unit,
+  [@bs.optional] onChange: string => unit,
   [@bs.optional] onTabClick: ReactEvent.Mouse.t => unit,
   [@bs.optional] onPrevClick: ReactEvent.Mouse.t => unit,
   [@bs.optional] onNextClick: ReactEvent.Mouse.t => unit,
   [@bs.optional] tabBarExtraContent: ReasonReact.reactElement,
   [@bs.optional] tabBarStyle: ReactDOMRe.Style.t,
-  [@bs.optional] [@bs.as "type"] _type: tabsType,
-  [@bs.optional] tabPosition: tabsPosition,
+  [@bs.optional] [@bs.as "type"] _type: string, /* tabsType, */
+  [@bs.optional] tabPosition: string, /* tabsPosition, */
   /* TODO */
   /* [@bs.optional] onEdit: (~targetKey: string | React.MouseEvent<HTMLElement>, action: any) => void, */
-  [@bs.optional] size: tabSize,
+  [@bs.optional] size: string, /* tabSize, */
   [@bs.optional] style: ReactDOMRe.Style.t,
   [@bs.optional] prefixCls: string,
   [@bs.optional] className: string,
@@ -53,7 +53,7 @@ let make =
       ~prefixCls=?,
       ~className=?,
       ~tabBarGutter=?,
-      ~children,
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=tabs,
@@ -68,9 +68,9 @@ let make =
         ~onNextClick?,
         ~tabBarExtraContent?,
         ~tabBarStyle?,
-        ~_type?,
-        ~tabPosition?,
-        ~size?,
+        ~_type=?Js.Option.map((. b) => tabsTypeToJs(b), _type),
+        ~tabPosition=?Js.Option.map((. b) => tabsPositionToJs(b), tabPosition),
+        ~size=?Js.Option.map((. b) => tabSizeToJs(b), size),
         ~style?,
         ~prefixCls?,
         ~className?,
@@ -99,14 +99,14 @@ module TabPane {
   
   let make =
     (
-      ~tab,
-      ~style,
-      ~closable,
-      ~className,
-      ~disabled,
-      ~forceRender,
-      ~key,
-      ~children,
+      ~tab=?,
+      ~style=?,
+      ~closable=?,
+      ~className=?,
+      ~disabled=?,
+      ~forceRender=?,
+      ~key=?,
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=tabpane,
