@@ -18,6 +18,8 @@ module Layout = Antd_Layout;
 
 module Menu = Antd_Menu;
 
+module Popover = Antd_Popover;
+
 module Radio = Antd_Radio;
 
 module Spin = Antd_Spin;
