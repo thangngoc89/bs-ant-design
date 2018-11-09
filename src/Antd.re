@@ -24,6 +24,8 @@ module Spin = Antd_Spin;
 
 module Steps = Antd_Steps;
 
+module Tooltip = Antd_Tooltip;
+
 module Input = Antd_Input;
 
 module Select = Antd_Select;
