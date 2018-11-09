@@ -33,7 +33,7 @@ type jsProps = {
   [@bs.optional] tabBarGutter: float,
   /* TODO */
   /* [@bs.optional] renderTabBar: (props: TabsProps, DefaultTabBar: React.ReactNode) => React.ReactElement<any>, */
-}
+};
 
 let make =
     (
@@ -79,3 +79,49 @@ let make =
       ),
     children,
   );
+
+type tabArg = 
+  | Node(ReasonReact.reactElement)
+  | Str(string);
+
+module TabPane {
+  [@bs.val] external tabpane:ReasonReact.reactClass = "Tabs.TabPane";
+  [@bs.deriving abstract]
+  type jsProps = {
+    [@bs.optional] tab: string, /* TODO union type tabArg */
+    [@bs.optional] style: ReactDOMRe.Style.t,
+    [@bs.optional] closable: bool,
+    [@bs.optional] className: string,
+    [@bs.optional] disabled: bool,
+    [@bs.optional] forceRender: bool,
+    [@bs.optional] key: string,
+  }
+  
+  let make =
+    (
+      ~tab,
+      ~style,
+      ~closable,
+      ~className,
+      ~disabled,
+      ~forceRender,
+      ~key,
+      ~children,
+    ) =>
+  ReasonReact.wrapJsForReason(
+    ~reactClass=tabpane,
+    ~props=
+      jsProps(
+        ~tab?,
+        ~style?,
+        ~closable?,
+        ~className?,
+        ~disabled?,
+        ~forceRender?,
+        ~key?,
+        (),
+      ),
+    children,
+  );
+
+}
