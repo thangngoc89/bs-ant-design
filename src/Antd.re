@@ -36,4 +36,6 @@ module AutoComplete = Antd_AutoComplete;
 
 module Form = Antd_Form;
 
+module Table = Antd_Table;
+
 module Tabs = Antd_Tabs;
