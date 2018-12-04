@@ -2,19 +2,12 @@
 
 [%bs.raw {|require("antd/lib/table/style")|}];
 
-type columnType = {
-  .
-  "dataIndex": string,
-  "key": string,
-  "title": string,
-};
-
 [@bs.deriving abstract]
-type jsProps = {
+type jsProps('a, 'b) = {
   [@bs.optional]
-  dataSource: array(Js.Json.t),
+  dataSource: array(Js.t('a)),
   [@bs.optional]
-  columns: array(columnType),
+  columns: array(Js.t('b)),
   [@bs.optional]
   prefixCls: string,
   [@bs.optional]
