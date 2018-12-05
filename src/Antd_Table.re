@@ -7,7 +7,7 @@ type jsProps('a, 'b) = {
   [@bs.optional]
   dataSource: array(Js.t('a)),
   [@bs.optional]
-  columns: array(Js.t('b)),
+  columns: array('b),
   [@bs.optional]
   prefixCls: string,
   [@bs.optional]
