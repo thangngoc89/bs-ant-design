@@ -32,7 +32,7 @@ module Item = {
         children,
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=timeline,
+      ~reactClass=item,
       ~props=
         jsProps(
           ~prefixCls?,
