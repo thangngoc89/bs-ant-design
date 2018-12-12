@@ -65,7 +65,7 @@ type jsProps = {
   [@bs.optional]
   reverse: bool,
   [@bs.optional]
-  mode,
+  mode: string,
 };
 
 let make =
@@ -89,7 +89,7 @@ let make =
         ~pendingDot?,
         ~style?,
         ~reverse?,
-        ~mode?,
+        ~mode=?Js.Option.map((. b) => modeToJs(b), mode),
         (),
       ),
     children,
