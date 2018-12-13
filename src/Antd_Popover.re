@@ -17,7 +17,7 @@ external makeProps:
     ~mouseEnterDelay: int=?,
     ~mouseLeaveDelay: int=?,
     ~transitionName: string=?,
-    ~trigger: Antd_Tooltip.trigger=?,
+    ~trigger: string=?,
     ~openClassName: string=?,
     ~arrowPointAtCenter: bool=?,
     ~autoAdjustOverflow: bool=?, /* | Placement.adjustOverflow */
@@ -68,7 +68,8 @@ let make =
         ~mouseEnterDelay?,
         ~mouseLeaveDelay?,
         ~transitionName?,
-        ~trigger?,
+        ~trigger=?
+          Js.Option.map((. b) => Antd_Tooltip.triggerToJs(b), trigger),
         ~openClassName?,
         ~arrowPointAtCenter?,
         ~autoAdjustOverflow?,

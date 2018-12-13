@@ -17,6 +17,7 @@ type placement = [
   | `rightBottom
 ];
 
+[@bs.deriving jsConverter]
 type trigger = [ | `hover | `focus | `click | `contextMenu];
 
 [@bs.obj]
@@ -34,7 +35,7 @@ external makeProps:
     ~mouseEnterDelay: int=?,
     ~mouseLeaveDelay: int=?,
     ~transitionName: string=?,
-    ~trigger: trigger=?,
+    ~trigger: string=?,
     ~openClassName: string=?,
     ~arrowPointAtCenter: bool=?,
     ~autoAdjustOverflow: bool=?, /* | Placement.adjustOverflow */
@@ -85,7 +86,7 @@ let make =
         ~mouseEnterDelay?,
         ~mouseLeaveDelay?,
         ~transitionName?,
-        ~trigger?,
+        ~trigger=?Js.Option.map((. b) => triggerToJs(b), trigger),
         ~openClassName?,
         ~arrowPointAtCenter?,
         ~autoAdjustOverflow?,
