@@ -41,3 +41,5 @@ module Table = Antd_Table;
 module Tabs = Antd_Tabs;
 
 module Timeline = Antd_Timeline;
+
+module DropDown = Antd_DropDown;
