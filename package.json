@@ -1,6 +1,6 @@
 {
   "name": "@lab-79/bs-ant-design",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Bucklescript bindings for Ant Design",
   "repository": {
     "type": "git",
