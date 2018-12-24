@@ -1,10 +1,10 @@
 {
-  "name": "bs-ant-design",
-  "version": "2.0.0",
+  "name": "@lab-79/bs-ant-design",
+  "version": "2.1.0",
   "description": "Bucklescript bindings for Ant Design",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thangngoc89/bs-ant-design"
+    "url": "https://gitlab.com/lab-79/bs-ant-design"
   },
   "scripts": {
     "changelog": "auto-changelog --template keepachangelog"
