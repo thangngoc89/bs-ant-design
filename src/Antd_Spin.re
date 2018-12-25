@@ -37,7 +37,7 @@ let make =
     ~reactClass=spin,
     ~props=
       makeProps(
-        ~size?,
+        ~size=?Js.Option.map((. b) => sizeToJs(b), size),
         ~spinning?,
         ~tip?,
         ~delay?,
