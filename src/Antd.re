@@ -51,3 +51,5 @@ module Switch = Antd_Switch;
 module Affix = Antd_Affix;
 
 module Tag = Antd_Tag;
+
+module Card = Antd_Card;
