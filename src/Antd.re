@@ -45,3 +45,5 @@ module Timeline = Antd_Timeline;
 module DropDown = Antd_DropDown;
 
 module Modal = Antd_Modal;
+
+module Switch = Antd_Switch;
