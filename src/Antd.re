@@ -47,3 +47,5 @@ module DropDown = Antd_DropDown;
 module Modal = Antd_Modal;
 
 module Switch = Antd_Switch;
+
+module Affix = Antd_Affix;
