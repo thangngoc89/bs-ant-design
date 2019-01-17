@@ -49,3 +49,5 @@ module Modal = Antd_Modal;
 module Switch = Antd_Switch;
 
 module Affix = Antd_Affix;
+
+module Tag = Antd_Tag;
