@@ -55,3 +55,5 @@ module Tag = Antd_Tag;
 module Card = Antd_Card;
 
 module Checkbox = Antd_Checkbox;
+
+module InputNumber = Antd_InputNumber;
