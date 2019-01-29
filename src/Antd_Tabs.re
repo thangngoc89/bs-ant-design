@@ -80,15 +80,11 @@ let make =
     children,
   );
 
-type tabArg = 
-  | Node(ReasonReact.reactElement)
-  | Str(string);
-
 module TabPane {
   [@bs.val] external tabpane:ReasonReact.reactClass = "Tabs.TabPane";
   [@bs.deriving abstract]
   type jsProps = {
-    [@bs.optional] tab: string, /* TODO union type tabArg */
+    [@bs.optional] tab: ReasonReact.reactElement,
     [@bs.optional] style: ReactDOMRe.Style.t,
     [@bs.optional] closable: bool,
     [@bs.optional] className: string,
