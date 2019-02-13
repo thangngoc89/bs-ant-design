@@ -63,7 +63,7 @@ module Group = {
       ~options: 'a=?,
       ~size: string=?,
       ~value: string=?,
-      ~onChange: ReactEvent.Form.t => unit=?,
+      ~onChange: Js.t('a) => unit=?,
       ~id: string=?,
       ~className: string=?,
       ~style: ReactDOMRe.Style.t=?,
