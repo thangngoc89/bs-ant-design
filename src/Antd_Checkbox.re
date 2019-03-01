@@ -1,5 +1,4 @@
-[@bs.module "antd/lib/checkbox"]
-external reactClass: ReasonReact.reactClass = "default";
+[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/checkbox";
 
 [%bs.raw {|require("antd/lib/checkbox/style")|}];
 
