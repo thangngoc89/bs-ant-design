@@ -4,7 +4,7 @@
   "description": "Bucklescript bindings for Ant Design",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/lab-79/bs-ant-design"
+    "url": "https://github.com/thangngoc89/bs-ant-design"
   },
   "scripts": {
     "changelog": "auto-changelog --template keepachangelog",
