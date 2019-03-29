@@ -1,5 +1,5 @@
 {
-  "name": "@lab-79/bs-ant-design",
+  "name": "bs-ant-design",
   "version": "2.2.1",
   "description": "Bucklescript bindings for Ant Design",
   "repository": {
@@ -23,7 +23,7 @@
     "reason-react": ">=0.5.3"
   },
   "dependencies": {
-    "antd": "3.11.2",
+    "antd": "^3.8.2",
     "re-classnames": "^3.0.0"
   }
 }
