@@ -27,10 +27,10 @@ type jsProps = {
   disabled: bool,
   [@bs.optional]
   size: string,
-  /* [@bs.optional]
-     formatter: (value: int | string | undefined) => string, */
-  /* [@bs.optional]
-     parser: (displayValue: string | undefined) => int, */
+  [@bs.optional]
+  formatter: 'a => string, 
+  [@bs.optional]
+  parser: 'a => int, 
   [@bs.optional]
   decimalSeparator: string,
   [@bs.optional]
@@ -59,6 +59,8 @@ let make =
       ~onChange=?,
       ~disabled=?,
       ~size=?,
+      ~formatter=?,
+      ~parser=?,
       ~decimalSeparator=?,
       ~placeholder=?,
       ~style=?,
@@ -82,6 +84,8 @@ let make =
         ~onChange?,
         ~disabled?,
         ~size=?Js.Option.map((. b) => sizeToJs(b), size),
+        ~formatter=?,
+        ~parser=?,
         ~decimalSeparator?,
         ~placeholder?,
         ~style?,
