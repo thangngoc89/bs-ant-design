@@ -17,10 +17,10 @@
     "cheerio": "^1.0.0-rc.2",
     "got": "^8.0.1",
     "lodash": "^4.17.4",
-    "reason-react": ">=0.5.3"
+    "reason-react": "^0.7.0"
   },
   "peerDependencies": {
-    "reason-react": ">=0.5.3"
+    "reason-react": "^0.7.0"
   },
   "dependencies": {
     "antd": "^3.8.2",
