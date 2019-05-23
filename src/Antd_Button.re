@@ -8,7 +8,7 @@ module IconName = Antd_IconName;
 type buttonType = [ | `primary | `ghost | `dashed | `danger];
 
 [@bs.deriving jsConverter]
-type buttonShape = [ | `circle' | [@bs.as "circle-outline"] `circleOutline];
+type buttonShape = [ | `circle | [@bs.as "circle-outline"] `circleOutline];
 
 [@bs.deriving jsConverter]
 type buttonSize = [ | `small | `default | `large];
