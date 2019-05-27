@@ -23,7 +23,7 @@
     "reason-react": "^0.7.0"
   },
   "dependencies": {
-    "antd": "^3.8.2",
+    "antd": "3.8.2",
     "re-classnames": "^3.0.0"
   }
 }
