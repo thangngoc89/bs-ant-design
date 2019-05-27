@@ -5,14 +5,6 @@
 [@bs.deriving jsConverter]
 type size = [ | `small | `default | `large];
 
-type selectValue = [
-  | `Int(int)
-  | `IntArray(array(int))
-  | `Str(string)
-  | `StrArray(array(string))
-];
-/* LabeledValue | LabeledValue[]; */
-
 [@bs.obj]
 external makeProps:
   (
@@ -53,15 +45,15 @@ external makeProps:
     ~optionLabelProp: string=?,
     ~firstActiveValue: array(string)=?,
     ~onChange: (
-                 ~value: selectValue,
+                 ~value: Js.t('a),
                  ~option: array(ReasonReact.reactElement)
                ) =>
                unit
                  =?,
-    ~onSelect: (~value: selectValue, ~option: ReasonReact.reactElement) => unit
+    ~onSelect: (~value: Js.t('a), ~option: ReasonReact.reactElement) => unit
                  =?,
-    ~onDeselect: (~value: selectValue) => unit=?,
-    ~onBlur: (~value: selectValue) => unit=?,
+    ~onDeselect: (~value: Js.t('a)) => unit=?,
+    ~onBlur: (~value: Js.t('a)) => unit=?,
     ~onFocus: unit => unit=?,
     ~onPopupScroll: ReactEvent.UI.t=?,
     ~onInputKeyDown: (~event: ReactEvent.Keyboard.t) => unit=?,
