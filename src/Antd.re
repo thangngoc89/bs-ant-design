@@ -57,3 +57,7 @@ module Card = Antd_Card;
 module Checkbox = Antd_Checkbox;
 
 module InputNumber = Antd_InputNumber;
+
+module Pagination = Antd_Pagination;
+
+let fff = "fuck";
