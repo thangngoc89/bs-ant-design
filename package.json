@@ -13,7 +13,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^4.0.8",
+    "bs-platform": "^5.0.4",
     "cheerio": "^1.0.0-rc.2",
     "got": "^8.0.1",
     "lodash": "^4.17.4",
