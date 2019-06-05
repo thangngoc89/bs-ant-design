@@ -1,4 +1,4 @@
-[@bs.module] external tag: ReasonReact.reactClass = "antd/lib/tag";
+[@bs.module "antd/lib/tag"] external tag: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/tag/style")|}];
 

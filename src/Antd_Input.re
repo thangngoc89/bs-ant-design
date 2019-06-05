@@ -1,4 +1,5 @@
-[@bs.module] external input: ReasonReact.reactClass = "antd/lib/input";
+[@bs.module "antd/lib/input"]
+external input: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/input/style")|}];
 
@@ -60,7 +61,7 @@ let make =
   );
 
 module TextArea = {
-  [@bs.module "antd/lib/input"]
+  [@bs.module "antd/lib/input"] [@bs.scope "default"]
   external reactClass: ReasonReact.reactClass = "TextArea";
   let make =
       (
@@ -132,7 +133,7 @@ module Search = {
     enterButton: [ | `Bool(bool) | `Node(ReasonReact.reactElement)],
   };
 
-  [@bs.module "antd/lib/input"]
+  [@bs.module "antd/lib/input"] [@bs.scope "default"]
   external reactClass: ReasonReact.reactClass = "Search";
 
   let make =

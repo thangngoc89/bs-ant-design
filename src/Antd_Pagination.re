@@ -1,5 +1,5 @@
-[@bs.module]
-external pagination: ReasonReact.reactClass = "antd/lib/pagination";
+[@bs.module "antd/lib/pagination"]
+external pagination: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/pagination/style")|}];
 

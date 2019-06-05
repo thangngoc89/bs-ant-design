@@ -1,4 +1,4 @@
-[@bs.module] external icon: ReasonReact.reactClass = "antd/lib/icon";
+[@bs.module "antd/lib/icon"] external icon: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/icon/style")|}];
 

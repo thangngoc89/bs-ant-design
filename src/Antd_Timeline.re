@@ -1,4 +1,5 @@
-[@bs.module] external timeline: ReasonReact.reactClass = "antd/lib/timeline";
+[@bs.module "antd/lib/timeline"]
+external timeline: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/timeline/style")|}];
 

@@ -1,4 +1,5 @@
-[@bs.module] external select: ReasonReact.reactClass = "antd/lib/select";
+[@bs.module "antd/lib/select"]
+external select: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/select/style")|}];
 
@@ -50,8 +51,7 @@ external makeProps:
                ) =>
                unit
                  =?,
-    ~onSelect: (~value: Js.t('a), ~option: ReasonReact.reactElement) => unit
-                 =?,
+    ~onSelect: (~value: Js.t('a), ~option: ReasonReact.reactElement) => unit=?,
     ~onDeselect: (~value: Js.t('a)) => unit=?,
     ~onBlur: (~value: Js.t('a)) => unit=?,
     ~onFocus: unit => unit=?,
@@ -193,7 +193,7 @@ let make =
   );
 
 module Option = {
-  [@bs.module "antd/lib/select"]
+  [@bs.module "antd/lib/select"] [@bs.scope "default"]
   external reactClass: ReasonReact.reactClass = "Option";
 
   [@bs.obj]

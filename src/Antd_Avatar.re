@@ -1,6 +1,7 @@
 module IconName = Antd_IconName;
 
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/avatar";
+[@bs.module "antd/lib/avatar"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/avatar/style")|}];
 

@@ -1,4 +1,5 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/modal";
+[@bs.module "antd/lib/modal"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/modal/style")|}];
 

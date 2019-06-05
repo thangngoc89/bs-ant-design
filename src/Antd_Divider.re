@@ -1,4 +1,5 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/divider";
+[@bs.module "antd/lib/divider"]
+external divider: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/divider/style")|}];
 
@@ -20,7 +21,7 @@ external makeProps:
 
 let make = (~_type=?, ~dash=?, ~id=?, ~className=?, ~style=?, children) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass,
+    ~reactClass=divider,
     ~props=
       makeProps(
         ~_type=?Js.Option.map((. b) => dividerTypeToJs(b), _type),

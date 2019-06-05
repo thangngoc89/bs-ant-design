@@ -1,4 +1,5 @@
-[@bs.module] external table: ReasonReact.reactClass = "antd/lib/table";
+[@bs.module "antd/lib/table"]
+external table: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/table/style")|}];
 

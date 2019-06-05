@@ -1,5 +1,7 @@
-[@bs.module]
-external breadcrumb: ReasonReact.reactClass = "antd/lib/breadcrumb";
+[@bs.module "antd/lib/breadcrumb"]
+external breadcrumb: ReasonReact.reactClass = "default";
+[@bs.module "antd/lib/breadcrumb"] [@bs.scope "default"]
+external item: ReasonReact.reactClass = "Item";
 
 [%bs.raw {|require("antd/lib/breadcrumb/style")|}];
 
@@ -28,8 +30,6 @@ let make =
   );
 
 module Item = {
-  [@bs.module "antd/lib/breadcrumb"]
-  external item: ReasonReact.reactClass = "Item";
   [@bs.obj]
   external makeProps:
     (

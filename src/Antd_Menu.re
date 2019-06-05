@@ -1,4 +1,4 @@
-[@bs.module] external menu: ReasonReact.reactClass = "antd/lib/menu";
+[@bs.module "antd/lib/menu"] external menu: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/menu/style")|}];
 
@@ -103,7 +103,8 @@ let make =
   );
 
 module Item = {
-  [@bs.module "antd/lib/menu"] external item: ReasonReact.reactClass = "Item";
+  [@bs.module "antd/lib/menu"] [@bs.scope "default"]
+  external item: ReasonReact.reactClass = "Item";
   [@bs.obj]
   external makeProps:
     (
@@ -126,7 +127,7 @@ module Item = {
 };
 
 module SubMenu = {
-  [@bs.module "antd/lib/menu"]
+  [@bs.module "antd/lib/menu"] [@bs.scope "default"]
   external subMenu: ReasonReact.reactClass = "SubMenu";
   [@bs.obj]
   external makeProps:
@@ -171,7 +172,7 @@ module SubMenu = {
 };
 
 module ItemGroup = {
-  [@bs.module "antd/lib/menu"]
+  [@bs.module "antd/lib/menu"] [@bs.scope "default"]
   external itemGroup: ReasonReact.reactClass = "ItemGroup";
   [@bs.obj]
   external makeProps:
@@ -193,7 +194,7 @@ module ItemGroup = {
 };
 
 module Divider = {
-  [@bs.module "antd/lib/menu"]
+  [@bs.module "antd/lib/menu"] [@bs.scope "default"]
   external divider: ReasonReact.reactClass = "Divider";
   [@bs.obj]
   external makeProps:

@@ -1,4 +1,4 @@
-[@bs.module] external card: ReasonReact.reactClass = "antd/lib/card";
+[@bs.module "antd/lib/card"] external card: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/card/style")|}];
 

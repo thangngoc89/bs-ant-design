@@ -1,4 +1,5 @@
-[@bs.module] external affix: ReasonReact.reactClass = "antd/lib/affix";
+[@bs.module "antd/lib/affix"]
+external affix: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/affix/style")|}];
 

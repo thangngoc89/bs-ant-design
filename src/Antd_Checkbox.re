@@ -1,4 +1,7 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/checkbox";
+[@bs.module "antd/lib/checkbox"]
+external checkbox: ReasonReact.reactClass = "default";
+[@bs.module "antd/lib/checkbox"] [@bs.scope "default"]
+external group: ReasonReact.reactClass = "Group";
 
 [%bs.raw {|require("antd/lib/checkbox/style")|}];
 
@@ -43,7 +46,7 @@ let make =
       children,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass,
+    ~reactClass=checkbox,
     ~props=
       makeProps(
         ~prefixCls?,
@@ -66,8 +69,6 @@ let make =
   );
 
 module Group = {
-  [@bs.module "antd/lib/checkbox"]
-  external reactClass: ReasonReact.reactClass = "Group";
   [@bs.deriving jsConverter]
   type size = [ | `default | `small | `large];
   [@bs.obj]
@@ -86,7 +87,7 @@ module Group = {
   let make =
       (~prefCls=?, ~className=?, ~options=?, ~disabled=?, ~style=?, children) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass,
+      ~reactClass=group,
       ~props=
         makeProps(~prefCls?, ~className?, ~options?, ~disabled?, ~style?, ()),
       children,

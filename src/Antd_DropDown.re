@@ -1,4 +1,5 @@
-[@bs.module] external dropdown: ReasonReact.reactClass = "antd/lib/dropdown";
+[@bs.module "antd/lib/dropdown"]
+external dropdown: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/dropdown/style")|}];
 

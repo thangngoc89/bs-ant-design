@@ -1,4 +1,5 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/popover";
+[@bs.module "antd/lib/popover"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/popover/style")|}];
 

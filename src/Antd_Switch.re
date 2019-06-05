@@ -1,4 +1,5 @@
-[@bs.module] external switcher: ReasonReact.reactClass = "antd/lib/switch";
+[@bs.module "antd/lib/switch"]
+external switcher: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/switch/style")|}];
 

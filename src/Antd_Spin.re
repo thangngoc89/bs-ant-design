@@ -1,4 +1,4 @@
-[@bs.module] external spin: ReasonReact.reactClass = "antd/lib/spin";
+[@bs.module "antd/lib/spin"] external spin: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/spin/style")|}];
 
