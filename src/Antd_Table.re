@@ -4,7 +4,7 @@ external table: ReasonReact.reactClass = "default";
 [%bs.raw {|require("antd/lib/table/style")|}];
 
 [@bs.deriving abstract]
-type jsProps('a, 'b) = {
+type jsProps('a, 'b, 'c, 'd) = {
   [@bs.optional]
   dataSource: array(Js.t('a)),
   [@bs.optional]
@@ -19,15 +19,14 @@ type jsProps('a, 'b) = {
   className: string,
   [@bs.optional]
   size: string,
-  /* TODO */
-  /* loading: PropTypes.oneOfType([
-       PropTypes.bool,
-       PropTypes.object,
-     ]), */
+  [@bs.optional]
+  loading: bool,
+  [@bs.optional]
+  pagination: Js.t('d),
   [@bs.optional]
   bordered: bool,
-  /* TODO */
-  /* onChange: PropTypes.func, */
+  [@bs.optional]
+  onChange: Js.t('c) => unit,
   [@bs.optional]
   locale: Js.Json.t,
   [@bs.optional]
@@ -43,11 +42,14 @@ let make =
       ~rowSelection=?,
       ~className=?,
       ~size=?,
+      ~loading=?,
+      ~pagination=?,
       ~bordered=?,
+      ~onChange=?,
       ~locale=?,
       ~dropdownPrefixCls=?,
       children,
-    ) =>
+    ) => {
   ReasonReact.wrapJsForReason(
     ~reactClass=table,
     ~props=
@@ -59,10 +61,14 @@ let make =
         ~rowSelection?,
         ~className?,
         ~size?,
+        ~loading?,
+        ~pagination?,
         ~bordered?,
+        ~onChange?,
         ~locale?,
         ~dropdownPrefixCls?,
         (),
       ),
     children,
   );
+};
