@@ -1,8 +1,8 @@
 [%bs.raw {|require("antd/lib/grid/style")|}];
 
 module Row = {
-  [@bs.module]
-  external reactClass: ReasonReact.reactClass = "antd/lib/grid/row";
+  [@bs.module "antd/lib/grid/row"]
+  external reactClass: ReasonReact.reactClass = "default";
   [@bs.deriving jsConverter]
   type rowType = [ | `flex];
   [@bs.deriving jsConverter]
@@ -91,8 +91,8 @@ module Row = {
 };
 
 module Col = {
-  [@bs.module]
-  external reactClass: ReasonReact.reactClass = "antd/lib/grid/col";
+  [@bs.module "antd/lib/grid/col"]
+  external reactClass: ReasonReact.reactClass = "default";
   type fullColSize;
   [@bs.obj]
   external makeColSize:

@@ -1,6 +1,7 @@
 module IconName = Antd_IconName;
 
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/button";
+[@bs.module "antd/lib/button"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/button/style")|}];
 
@@ -8,7 +9,7 @@ module IconName = Antd_IconName;
 type buttonType = [ | `primary | `ghost | `dashed | `danger];
 
 [@bs.deriving jsConverter]
-type buttonShape = [ | `circle' | [@bs.as "circle-outline"] `circleOutline];
+type buttonShape = [ | `circle | [@bs.as "circle-outline"] `circleOutline];
 
 [@bs.deriving jsConverter]
 type buttonSize = [ | `small | `default | `large];

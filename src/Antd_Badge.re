@@ -1,4 +1,5 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/badge";
+[@bs.module "antd/lib/badge"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/badge/style")|}];
 
@@ -7,7 +8,6 @@ type status = [ | `success | `processing | `default | `error | `warning];
 
 [@bs.obj]
 external makeProps:
-
   (
     ~count: int=?,
     ~showZero: bool=?,
@@ -28,19 +28,19 @@ external makeProps:
 
 let make =
     (
-    ~count=?,
-    ~showZero=?,
-    ~overflowCount=?,
-    ~dot=?,
-    ~style=?,
-    ~prefixCls=?,
-    ~className=?,
-    ~status=?,
-    ~text=?,
-    ~title=?,
-    ~scrollNumberPrefixCls=?,
-    ~offset=?,
-    children,
+      ~count=?,
+      ~showZero=?,
+      ~overflowCount=?,
+      ~dot=?,
+      ~style=?,
+      ~prefixCls=?,
+      ~className=?,
+      ~status=?,
+      ~text=?,
+      ~title=?,
+      ~scrollNumberPrefixCls=?,
+      ~offset=?,
+      children,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass,

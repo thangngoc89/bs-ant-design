@@ -1,28 +1,29 @@
 {
-  "name": "bs-ant-design",
-  "version": "2.1.0",
+  "name": "@lab-79/bs-ant-design",
+  "version": "2.3.1",
   "description": "Bucklescript bindings for Ant Design",
   "repository": {
     "type": "git",
     "url": "https://github.com/thangngoc89/bs-ant-design"
   },
   "scripts": {
-    "changelog": "auto-changelog --template keepachangelog"
+    "changelog": "auto-changelog --template keepachangelog",
+    "start": "bsb -make-world -w"
   },
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^4.0.7",
+    "bs-platform": "^5.0.4",
     "cheerio": "^1.0.0-rc.2",
     "got": "^8.0.1",
     "lodash": "^4.17.4",
-    "reason-react": ">=0.5.3"
+    "reason-react": "^0.7.0"
   },
   "peerDependencies": {
-    "reason-react": ">=0.5.3"
+    "reason-react": "^0.7.0"
   },
   "dependencies": {
-    "antd": "^3.8.2",
+    "antd": "3.19.2",
     "re-classnames": "^3.0.0"
   }
 }

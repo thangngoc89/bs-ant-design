@@ -1,4 +1,5 @@
-[@bs.module] external reactClass: ReasonReact.reactClass = "antd/lib/steps";
+[@bs.module "antd/lib/steps"]
+external reactClass: ReasonReact.reactClass = "default";
 
 [%bs.raw {|require("antd/lib/steps/style")|}];
 
@@ -24,7 +25,7 @@ let make = (~status=?, ~current=?, ~style=?, children) =>
   );
 
 module Step = {
-  [@bs.module "antd/lib/steps"]
+  [@bs.module "antd/lib/steps"] [@bs.scope "default"]
   external reactClass: ReasonReact.reactClass = "Step";
 
   [@bs.obj]

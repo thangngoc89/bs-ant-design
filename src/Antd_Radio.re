@@ -49,7 +49,7 @@ let make =
   );
 
 module Group = {
-  [@bs.module "antd/lib/radio"]
+  [@bs.module "antd/lib/radio"] [@bs.scope "default"]
   external reactClass: ReasonReact.reactClass = "Group";
   [@bs.deriving jsConverter]
   type size = [ | `default | `small | `large];
@@ -62,8 +62,8 @@ module Group = {
       /* @todo: type me */
       ~options: 'a=?,
       ~size: string=?,
-      ~value: string,
-      ~onChange: ReactEvent.Form.t => unit,
+      ~value: string=?,
+      ~onChange: Js.t('a) => unit=?,
       ~id: string=?,
       ~className: string=?,
       ~style: ReactDOMRe.Style.t=?,
@@ -78,8 +78,8 @@ module Group = {
         ~name=?,
         ~options=?,
         ~size=?,
-        ~value,
-        ~onChange,
+        ~value=?,
+        ~onChange=?,
         ~id=?,
         ~className=?,
         ~style=?,
@@ -94,8 +94,8 @@ module Group = {
           ~name?,
           ~options?,
           ~size=?Js.Option.map((. b) => sizeToJs(b), size),
-          ~value,
-          ~onChange,
+          ~value?,
+          ~onChange?,
           ~id?,
           ~className?,
           ~style?,
